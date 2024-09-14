@@ -39,17 +39,16 @@
     <div class="col-md-4">
         <label for="password" class="form-label">Contraseña</label>
         <input type="password" id="password" class="form-control" name="password" ngModel required>
-        <div id="passwordHelpBlock" class="form-text">
-            Tu contraseña debe tener de 8-20 carácteres, contener letras y numeros y al menos un caracter especial, sin espacios.
-        </div>
-        <div class="error-message" *ngIf="errorMessages['Contrasena']">
-            <i class="fas fa-exclamation-circle"></i> {{ errorMessages['Contrasena'] }}
-        </div>
+        <div class="error-message" [ngClass]="{'password-error': errorMessages['Contrasena'], 'password-no-error': !errorMessages['Contrasena']}">
+            <i class="fas fa-exclamation-circle"></i> {{ errorMessages['Contrasena'] || 'Tu contraseña debe tener de 8-20 carácteres, contener letras y números y al menos un carácter especial, sin espacios.' }}
+        </div>        
         <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" required>
-            <label class="form-check-label" for="flexCheckChecked">He leído y acepto la</label>
+            <input class="form-check-input" type="checkbox" value="" id="privacyPolicy" name="privacyPolicy" ngModel required>
+            <label class="form-check-label" for="privacyPolicy">He leído y acepto la <a class="link-opacity-50-hover" href="/privacy-policy">política de privacidad</a></label>
+            <div class="error-message" *ngIf="errorMessages['Politica']">
+                <i class="fas fa-exclamation-circle"></i> {{ errorMessages['Politica'] }}
+            </div>
         </div>
-        <p><a class="link-opacity-50-hover" href="/privacy-policy">política de privacidad</a></p>
         <div class="buttonRegistrarme">
             <button type="submit" class="btn btn-lg custom-green-button">Registrarme</button>
         </div>

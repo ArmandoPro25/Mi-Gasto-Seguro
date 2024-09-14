@@ -28,5 +28,10 @@ export class UserService {
   updateTypeUser(Id_User: string, Type_User: number): Observable<ApiResponse> {
     return this.http.put<ApiResponse>(`${this.API_URI}/${Id_User}`, { Type_User });
   }
+
+  checkEmailExists(email: string): Observable<ApiResponse> {
+    return this.http.get<ApiResponse>(`${this.API_URI}/check-email`, { params: { email } });
+  }
+
   
 }

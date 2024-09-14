@@ -108,6 +108,24 @@ class UserController {
             }
         });
     }
+    emailExists(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { email } = req.query;
+            try {
+                const result = yield database_1.default.query('SELECT * FROM User WHERE Email_User = ?', [email]);
+                if (result.length > 0) {
+                    res.json({ success: true, message: 'Email already exists' });
+                }
+                else {
+                    res.status(404).json({ success: false, message: 'Email does not exist' });
+                }
+            }
+            catch (err) {
+                console.error(err); // Log error for debugging
+                res.status(500).json({ success: false, message: 'Error searching email' });
+            }
+        });
+    }
 }
 exports.userController = new UserController();
 exports.default = exports.userController;

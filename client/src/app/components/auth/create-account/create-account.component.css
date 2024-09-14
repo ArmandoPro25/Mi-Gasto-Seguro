@@ -102,14 +102,14 @@ h1 {
 .link-opacity-50-hover {
     height: auto;
     position: absolute;
-    top: 155px;
     left: 167px;
+    width: 155px;
 }
 
 .buttonRegistrarme {
     height: auto;
     position: absolute;
-    top: 195px;
+    top: 215px;
 }
 
 .custom-green-button {
@@ -152,4 +152,12 @@ h5 {
 
 .error-message i {
     margin-right: 5px;
+}
+
+.password-error {
+    color: #af1919;
+}
+
+.password-no-error {
+    color: black;
 }

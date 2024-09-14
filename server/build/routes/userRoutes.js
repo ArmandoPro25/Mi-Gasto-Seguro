@@ -14,8 +14,8 @@ class UserRoutes {
         this.router.post('/authenticate', userController_1.default.authenticate);
         this.router.post('/', userController_1.default.create);
         this.router.post('/verify-email', userController_1.default.verifyEmail);
-        this.router.get('/:idUser', userController_1.default.getOne);
         this.router.put('/:idUser', userController_1.default.typeUser);
+        this.router.get('/check-email', userController_1.default.emailExists);
     }
 }
 const userRoutes = new UserRoutes();

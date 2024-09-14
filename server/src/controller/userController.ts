@@ -91,7 +91,22 @@ class UserController {
           res.status(500).json({ success: false, message: 'Error updating user type' });
         }
       }
-      
+
+      public async emailExists(req: Request, res: Response): Promise<void> {
+        const { email } = req.query;
+        try {
+            const result = await pool.query('SELECT * FROM User WHERE Email_User = ?', [email]);
+            if (result.length > 0) {
+                res.json({ success: true, message: 'Email already exists' });
+            } else {
+                res.status(404).json({ success: false, message: 'Email does not exist' });
+            }
+        } catch (err) {
+            console.error(err); // Log error for debugging
+            res.status(500).json({ success: false, message: 'Error searching email' });
+        }
+    }
+    
 
     }
 
