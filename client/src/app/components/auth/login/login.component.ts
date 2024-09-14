@@ -10,13 +10,23 @@ import { UserService } from '../../../services/user.service';
 export class LoginComponent implements OnInit {
   errorMessage: string | null = null;
   passwordFieldType: string = 'password';
+  rememberMe: boolean = false;
 
   constructor(
     private userService: UserService, 
     private router: Router
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    const savedUsername = localStorage.getItem('savedUsername');
+    if (savedUsername) {
+      const loginForm = document.getElementById('validationTooltipUsername') as HTMLInputElement;
+      if (loginForm) {
+        loginForm.value = savedUsername;
+      }
+      this.rememberMe = true;
+    }
+  }
 
   togglePasswordVisibility() {
     this.passwordFieldType = this.passwordFieldType === 'password' ? 'text' : 'password';
@@ -34,7 +44,13 @@ export class LoginComponent implements OnInit {
     this.userService.authenticate(username, password).subscribe(
       (response: any) => {
         if (response.success) {
-          this.router.navigate(['/home-user-type-1']);
+          const Type_User = response.Type_User;
+          if (this.rememberMe) {
+            localStorage.setItem('savedUsername', username);
+          } else {
+            localStorage.removeItem('savedUsername');
+          }
+          this.router.navigate([`/home-user-type-${Type_User}`]);
         }
       },
       error => {
