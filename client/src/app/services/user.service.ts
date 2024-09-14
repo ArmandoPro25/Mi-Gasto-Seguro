@@ -33,5 +33,12 @@ export class UserService {
     return this.http.get<ApiResponse>(`${this.API_URI}/check-email`, { params: { email } });
   }
 
+  sendPasswordRecoveryEmail(email: string): Observable<ApiResponse> {
+    return this.http.post<ApiResponse>(`${this.API_URI}/send-recovery-email`, { email });
+  }
   
+  verifyRecoveryCode(email: string, code: string): Observable<ApiResponse> {
+    return this.http.post<ApiResponse>(`${this.API_URI}/verify-recovery-code`, { email, code });
+}
+
 }

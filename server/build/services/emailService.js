@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.sendVerificationEmail = void 0;
+exports.sendRecoveryEmail = exports.sendVerificationEmail = void 0;
 const nodemailer_1 = __importDefault(require("nodemailer"));
 const transporter = nodemailer_1.default.createTransport({
     service: 'gmail',
@@ -40,3 +40,23 @@ const sendVerificationEmail = (to, code) => __awaiter(void 0, void 0, void 0, fu
     }
 });
 exports.sendVerificationEmail = sendVerificationEmail;
+const sendRecoveryEmail = (email, recoveryCode) => __awaiter(void 0, void 0, void 0, function* () {
+    const transporter = nodemailer_1.default.createTransport({
+        service: 'gmail',
+        auth: {
+            user: 'migastoseguro@gmail.com',
+            pass: 'f p e n x x k y g f v a o c j s',
+        },
+        tls: {
+            rejectUnauthorized: false
+        }
+    });
+    const mailOptions = {
+        from: 'migastoseguro@gmail.com',
+        to: email,
+        subject: 'Recuperación de contraseña',
+        text: `Usa este código para recuperar tu contraseña: ${recoveryCode}`,
+    };
+    yield transporter.sendMail(mailOptions);
+});
+exports.sendRecoveryEmail = sendRecoveryEmail;

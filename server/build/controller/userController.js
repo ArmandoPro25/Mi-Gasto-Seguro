@@ -39,18 +39,15 @@ class UserController {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const { Name_User, Email_User, Password_User, Type_User } = req.body;
-                // Generar un código de verificación aleatorio
-                const VerificationCode = crypto_1.default.randomBytes(3).toString('hex'); // Ejemplo de código de 6 caracteres
-                // Guardar el usuario en la base de datos (considera agregar el campo `verificationCode`)
+                const VerificationCode = crypto_1.default.randomBytes(3).toString('hex');
                 yield database_1.default.query('INSERT INTO User SET ?', [{ Name_User, Email_User, Password_User, Type_User, VerificationCode }]);
-                // Enviar correo de verificación
                 yield (0, emailService_1.sendVerificationEmail)(Email_User, VerificationCode);
-                res.json({ message: 'User created and verification email sent' }); // Enviando la respuesta
+                res.json({ message: 'User created and verification email sent' });
             }
             catch (err) {
-                console.error(err); // Opcional: para depuración
-                if (!res.headersSent) { // Verifica si las cabeceras ya se han enviado
-                    res.status(500).json({ error: 'An error occurred while creating the user' }); // Enviando la respuesta en caso de error
+                console.error(err);
+                if (!res.headersSent) {
+                    res.status(500).json({ error: 'An error occurred while creating the user' });
                 }
             }
         });
@@ -59,13 +56,10 @@ class UserController {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const { email, code } = req.body;
-                // Verificar el código en la base de datos
                 const user = yield database_1.default.query('SELECT * FROM User WHERE Email_User = ? AND VerificationCode = ?', [email, code]);
                 if (user.length > 0) {
-                    // Código correcto
                     yield database_1.default.query('UPDATE User SET Verified = 1 WHERE Email_User = ?', [email]);
-                    const { Id_User, Type_User } = user[0]; // Obtiene los datos del usuario
-                    // Devuelve Id_User y Type_User en la respuesta
+                    const { Id_User, Type_User } = user[0];
                     res.json({ success: true, message: 'Email verified', Id_User, Type_User });
                 }
                 else {
@@ -108,6 +102,37 @@ class UserController {
             }
             catch (err) {
                 res.status(500).json({ success: false, message: 'Error updating user type' });
+            }
+        });
+    }
+    checkEmailExists(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { email } = req.query;
+            try {
+                const result = yield database_1.default.query('SELECT * FROM User WHERE Email_User = ?', [email]);
+                if (result.length > 0) {
+                    res.json({ success: true, message: 'Correo encontrado' });
+                }
+                else {
+                    res.json({ success: false, message: 'Correo no encontrado' });
+                }
+            }
+            catch (err) {
+                res.status(500).json({ error: 'Error al verificar el correo' });
+            }
+        });
+    }
+    sendRecoveryEmail(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { email } = req.body;
+            try {
+                const recoveryCode = crypto_1.default.randomBytes(3).toString('hex');
+                yield database_1.default.query('UPDATE User SET VerificationCode = ? WHERE Email_User = ?', [recoveryCode, email]);
+                yield (0, emailService_1.sendRecoveryEmail)(email, recoveryCode);
+                res.json({ success: true, message: 'Correo de recuperación enviado' });
+            }
+            catch (err) {
+                res.status(500).json({ error: 'Error al enviar el correo de recuperación' });
             }
         });
     }

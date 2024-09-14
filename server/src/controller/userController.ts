@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import pool from '../database';
-import { sendVerificationEmail } from '../services/emailService';
+import { sendRecoveryEmail, sendVerificationEmail } from '../services/emailService';
 import crypto from 'crypto';
 
 class UserController {
@@ -24,50 +24,44 @@ class UserController {
     public async create(req: Request, res: Response): Promise<void> {
       try {
           const { Name_User, Email_User, Password_User, Type_User } = req.body;
+          const VerificationCode = crypto.randomBytes(3).toString('hex');
   
-          // Generar un código de verificación aleatorio
-          const VerificationCode = crypto.randomBytes(3).toString('hex'); // Ejemplo de código de 6 caracteres
-  
-          // Guardar el usuario en la base de datos (considera agregar el campo `verificationCode`)
           await pool.query('INSERT INTO User SET ?', [{ Name_User, Email_User, Password_User, Type_User, VerificationCode }]);
   
-          // Enviar correo de verificación
           await sendVerificationEmail(Email_User, VerificationCode);
   
-          res.json({ message: 'User created and verification email sent' }); // Enviando la respuesta
+          res.json({ message: 'User created and verification email sent' });
   
       } catch (err) {
-          console.error(err); // Opcional: para depuración
-          if (!res.headersSent) { // Verifica si las cabeceras ya se han enviado
-              res.status(500).json({ error: 'An error occurred while creating the user' }); // Enviando la respuesta en caso de error
+          console.error(err);
+          if (!res.headersSent) {
+              res.status(500).json({ error: 'An error occurred while creating the user' });
           }
       }
   }
   
 
-    public async verifyEmail(req: Request, res: Response): Promise<void> {
-        try {
-            const { email, code } = req.body;
-    
-            // Verificar el código en la base de datos
-            const user = await pool.query('SELECT * FROM User WHERE Email_User = ? AND VerificationCode = ?', [email, code]);
-    
-            if (user.length > 0) {
-                // Código correcto
-                await pool.query('UPDATE User SET Verified = 1 WHERE Email_User = ?', [email]);
-                
-                const { Id_User, Type_User } = user[0]; // Obtiene los datos del usuario
-    
-                // Devuelve Id_User y Type_User en la respuesta
-                res.json({ success: true, message: 'Email verified', Id_User, Type_User });
-            } else {
-                res.status(400).json({ success: false, message: 'Invalid verification code' });
-            }
-        } catch (err) {
-            res.status(500).json({ error: 'An error occurred during email verification' });
+  public async verifyEmail(req: Request, res: Response): Promise<void> {
+    try {
+        const { email, code } = req.body;
+
+        const user = await pool.query('SELECT * FROM User WHERE Email_User = ? AND VerificationCode = ?', [email, code]);
+
+        if (user.length > 0) {
+            await pool.query('UPDATE User SET Verified = 1 WHERE Email_User = ?', [email]);
+
+            const { Id_User, Type_User } = user[0];
+
+            res.json({ success: true, message: 'Email verified', Id_User, Type_User });
+        } else {
+            res.status(400).json({ success: false, message: 'Invalid verification code' });
         }
+    } catch (err) {
+        res.status(500).json({ error: 'An error occurred during email verification' });
     }
-    
+}
+
+
 
     public async getOne(req: Request, res: Response): Promise<void> {
         const { idUser } = req.params;
@@ -97,6 +91,31 @@ class UserController {
         }
       }
     
+      public async checkEmailExists(req: Request, res: Response): Promise<void> {
+        const { email } = req.query;
+        try {
+            const result = await pool.query('SELECT * FROM User WHERE Email_User = ?', [email]);
+            if (result.length > 0) {
+                res.json({ success: true, message: 'Correo encontrado' });
+            } else {
+                res.json({ success: false, message: 'Correo no encontrado' });
+            }
+        } catch (err) {
+            res.status(500).json({ error: 'Error al verificar el correo' });
+        }
+    }
+
+    public async sendRecoveryEmail(req: Request, res: Response): Promise<void> {
+        const { email } = req.body;
+        try {
+            const recoveryCode = crypto.randomBytes(3).toString('hex');
+            await pool.query('UPDATE User SET VerificationCode = ? WHERE Email_User = ?', [recoveryCode, email]);
+            await sendRecoveryEmail(email, recoveryCode);
+            res.json({ success: true, message: 'Correo de recuperación enviado' });
+        } catch (err) {
+            res.status(500).json({ error: 'Error al enviar el correo de recuperación' });
+        }
+    }
 
     }
 
