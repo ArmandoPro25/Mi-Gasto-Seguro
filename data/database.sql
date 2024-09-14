@@ -8,7 +8,6 @@ CREATE TABLE User (
     Email_User VARCHAR(50) NOT NULL UNIQUE,
     Password_User VARCHAR(20) NOT NULL,
     Type_User INT,
-    VerificationCode VARCHAR(6);
-    Verified BOOLEAN DEFAULT FALSE;
-
+    VerificationCode VARCHAR(6),
+    Verified BOOLEAN DEFAULT FALSE
 );

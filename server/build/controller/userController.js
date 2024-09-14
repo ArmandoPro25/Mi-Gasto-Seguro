@@ -45,10 +45,13 @@ class UserController {
                 yield database_1.default.query('INSERT INTO User SET ?', [{ Name_User, Email_User, Password_User, Type_User, VerificationCode }]);
                 // Enviar correo de verificación
                 yield (0, emailService_1.sendVerificationEmail)(Email_User, VerificationCode);
-                res.json({ message: 'User created and verification email sent' });
+                res.json({ message: 'User created and verification email sent' }); // Enviando la respuesta
             }
             catch (err) {
-                res.status(500).json({ error: 'An error occurred while creating the user' });
+                console.error(err); // Opcional: para depuración
+                if (!res.headersSent) { // Verifica si las cabeceras ya se han enviado
+                    res.status(500).json({ error: 'An error occurred while creating the user' }); // Enviando la respuesta en caso de error
+                }
             }
         });
     }
@@ -105,24 +108,6 @@ class UserController {
             }
             catch (err) {
                 res.status(500).json({ success: false, message: 'Error updating user type' });
-            }
-        });
-    }
-    emailExists(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const { email } = req.query;
-            try {
-                const result = yield database_1.default.query('SELECT * FROM User WHERE Email_User = ?', [email]);
-                if (result.length > 0) {
-                    res.json({ success: true, message: 'Email already exists' });
-                }
-                else {
-                    res.status(404).json({ success: false, message: 'Email does not exist' });
-                }
-            }
-            catch (err) {
-                console.error(err); // Log error for debugging
-                res.status(500).json({ success: false, message: 'Error searching email' });
             }
         });
     }

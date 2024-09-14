@@ -74,43 +74,24 @@ export class CreateAccountComponent {
   
 
   onRegister(form: NgForm): void {
-    if (this.validateForm(form)) {
-        const email = form.value.email;
-        
-        // Primero verifica si el email ya existe
-        this.userService.checkEmailExists(email).subscribe(
-            response => {
-                if (response.success) {
-                    this.errorMessages['Correo'] = 'Este correo ya está asociado a una cuenta';
-                } else {
-                    // Continúa con el registro si el email no existe
-                    const user = {
-                        Name_User: form.value.username,
-                        Email_User: email,
-                        Password_User: form.value.password,
-                        Type_User: 1
-                    };
-
-                    this.userService.register(user).subscribe(
-                        (response: ApiResponse) => {
-                            if (!response.success) {
-                                console.error('Error message from server:', response.message);
-                            } else {
-                                console.log('User registered', response);
-                                localStorage.setItem('emailForVerification', user.Email_User);
-                                this.router.navigate(['/verify-email']);
-                            }
-                        },
-                        error => {
-                            console.error('Error registering user', error);
-                        }
-                    );
-                }
-            },
-            error => {
-                console.error('Error checking email', error);
-            }
-        );
+    if (form.valid) {
+      const user = {
+        Name_User: form.value.username,
+        Email_User: form.value.email,
+        Password_User: form.value.password,
+        Type_User: 1 // O el tipo de usuario que desees
+      };
+      this.userService.register(user).subscribe(
+        (response: ApiResponse) => {
+          console.log('User registered', response);
+          // Guardar el correo en localStorage para usarlo luego en la verificación
+          localStorage.setItem('emailForVerification', user.Email_User);
+          this.router.navigate(['/verify-email']); // Redirige a la página de verificación de correo electrónico
+        },
+        error => {
+          console.error('Error registering user', error);
+        }
+      );
     }
-}
+  }
 }

@@ -22,23 +22,28 @@ class UserController {
 
 
     public async create(req: Request, res: Response): Promise<void> {
-        try {
-            const { Name_User, Email_User, Password_User, Type_User } = req.body;
-
-            // Generar un código de verificación aleatorio
-            const VerificationCode = crypto.randomBytes(3).toString('hex'); // Ejemplo de código de 6 caracteres
-
-            // Guardar el usuario en la base de datos (considera agregar el campo `verificationCode`)
-            await pool.query('INSERT INTO User SET ?', [{ Name_User, Email_User, Password_User, Type_User, VerificationCode }]);
-
-            // Enviar correo de verificación
-            await sendVerificationEmail(Email_User, VerificationCode);
-
-            res.json({ message: 'User created and verification email sent' });
-        } catch (err) {
-            res.status(500).json({ error: 'An error occurred while creating the user' });
-        }
-    }
+      try {
+          const { Name_User, Email_User, Password_User, Type_User } = req.body;
+  
+          // Generar un código de verificación aleatorio
+          const VerificationCode = crypto.randomBytes(3).toString('hex'); // Ejemplo de código de 6 caracteres
+  
+          // Guardar el usuario en la base de datos (considera agregar el campo `verificationCode`)
+          await pool.query('INSERT INTO User SET ?', [{ Name_User, Email_User, Password_User, Type_User, VerificationCode }]);
+  
+          // Enviar correo de verificación
+          await sendVerificationEmail(Email_User, VerificationCode);
+  
+          res.json({ message: 'User created and verification email sent' }); // Enviando la respuesta
+  
+      } catch (err) {
+          console.error(err); // Opcional: para depuración
+          if (!res.headersSent) { // Verifica si las cabeceras ya se han enviado
+              res.status(500).json({ error: 'An error occurred while creating the user' }); // Enviando la respuesta en caso de error
+          }
+      }
+  }
+  
 
     public async verifyEmail(req: Request, res: Response): Promise<void> {
         try {
@@ -91,21 +96,6 @@ class UserController {
           res.status(500).json({ success: false, message: 'Error updating user type' });
         }
       }
-
-      public async emailExists(req: Request, res: Response): Promise<void> {
-        const { email } = req.query;
-        try {
-            const result = await pool.query('SELECT * FROM User WHERE Email_User = ?', [email]);
-            if (result.length > 0) {
-                res.json({ success: true, message: 'Email already exists' });
-            } else {
-                res.status(404).json({ success: false, message: 'Email does not exist' });
-            }
-        } catch (err) {
-            console.error(err); // Log error for debugging
-            res.status(500).json({ success: false, message: 'Error searching email' });
-        }
-    }
     
 
     }
