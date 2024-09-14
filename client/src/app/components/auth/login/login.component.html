@@ -27,12 +27,12 @@
 <img src="https://i.imgur.com/yOlKMiJ.png" class="no-center">
 <img src="https://tse3.mm.bing.net/th?id=OIG2.4fZUMt.wtCIzu33_cmYC&pid=ImgGn" class="center">
 
-<form class="row g-3">
+<form class="row g-3" (ngSubmit)="onSubmit(loginForm)" #loginForm="ngForm" novalidate>
     <div class="col-md-4">
         <label for="validationTooltipUsername" class="form-label">Nombre de Usuario</label>
         <div class="input-group has-validation">
             <span class="input-group-text" id="validationTooltipUsernamePrepend">&#64;</span>
-            <input type="text" class="form-control" id="validationTooltipUsername" aria-describedby="validationTooltipUsernamePrepend" required>
+            <input type="text" class="form-control" id="validationTooltipUsername" aria-describedby="validationTooltipUsernamePrepend" name="username" ngModel required>
                 <div class="invalid-tooltip">
                     Por favor ingrese su nombre de usuario o correo electronico.
                 </div>
@@ -42,7 +42,7 @@
     <div class="col-md-3">
         <label for="validationTooltip05" class="form-label">Contraseña</label>
             <div class="input-group">
-                <input [type]="passwordFieldType" class="form-control" id="validationTooltip05" required>
+                <input [type]="passwordFieldType" class="form-control" id="validationTooltip05" name="password" ngModel required>
                     <div class="invalid-tooltip">
                         Por favor ingrese su contraseña.
                     </div>
@@ -58,7 +58,7 @@
     <p><a class="link-opacity-50-hover" href="/change-pass-email">Olvide mi contraseña</a></p>
     <div class="login">
         <div class="buttonLogin">
-            <button type="button" class="btn btn-lg custom-green-button" [routerLink]="['/home-user']">Iniciar Sesión</button>
+            <button type="submit" class="btn btn-lg custom-green-button">Iniciar Sesión</button>
         </div>
     <a>o</a>
     <div class="buttonRegistrarme">
@@ -68,6 +68,9 @@
         <button type="button" class="btn btn-google">
             <i class="fab fa-google"></i> Continuar con Google
         </button>
+        <div class="error-message" [class.show]="errorMessage">
+            <i class="fas fa-exclamation-circle"></i> {{ errorMessage }}
+        </div>
     </div>
     </div>
 </form>

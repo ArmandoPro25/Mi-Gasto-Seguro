@@ -207,5 +207,24 @@ h5 {
     height: auto;
     position: absolute;
     left: 220px;
-    bottom: 62px;
+    bottom: 87px;
+}
+
+.error-message {
+    color: #af1919;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+    z-index: 2;
+    min-height: 20px;
+    visibility: hidden;
+}
+
+.error-message.show {
+    visibility: visible;
+}
+
+.error-message i {
+    margin-right: 5px;
 }
