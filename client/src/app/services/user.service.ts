@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { User } from '../models/User';
+import { ApiResponse } from '../interfaces/apiResponse.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,20 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  authenticate(username: string, password: string): Observable<any> {
-    return this.http.post<any>(`${this.API_URI}/authenticate`, { username, password });
+  register(user: User): Observable<ApiResponse> {
+    return this.http.post<ApiResponse>(`${this.API_URI}`, user);
   }
+
+  verifyEmail(email: string, code: string): Observable<ApiResponse> {
+    return this.http.post<ApiResponse>(`${this.API_URI}/verify-email`, { email, code });
+  }
+
+  authenticate(username: string, password: string): Observable<ApiResponse> {
+    return this.http.post<ApiResponse>(`${this.API_URI}/authenticate`, { username, password });
+  }
+
+  updateTypeUser(Id_User: string, Type_User: number): Observable<ApiResponse> {
+    return this.http.put<ApiResponse>(`${this.API_URI}/${Id_User}`, { Type_User });
+  }
+  
 }

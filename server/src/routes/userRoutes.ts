@@ -11,6 +11,10 @@ class UserRoutes {
     config(): void {
         this.router.post('/authenticate',userController.authenticate);
         this.router.post('/',userController.create);
+        this.router.post('/verify-email', userController.verifyEmail);
+        this.router.get('/:idUser', userController.getOne);
+        this.router.put('/:idUser', userController.typeUser)
+
 
     }
 }

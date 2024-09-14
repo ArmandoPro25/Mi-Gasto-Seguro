@@ -2,6 +2,9 @@ import express, { Application } from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
 import userRoutes from './routes/userRoutes';
+import * as dotenv from 'dotenv';
+
+dotenv.config();
 
 class Server {
     public app: Application;

@@ -20,31 +20,41 @@
     organizados cada uno de tus gastos con "Mi Gasto Seguro"!
 </h5>
   
-<form class="row g-3">
+<form (ngSubmit)="onRegister(registerForm)" #registerForm="ngForm">
     <img src="https://i.imgur.com/gqJrHHl.png" class="image">
-    <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label">Correo Electronico</label>
-        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="nombre@ejemplo.com">
-    </div>
     <div class="mb-4">
-        <label for="exampleFormControlInput1" class="form-label">Nombre de usuario</label>
-        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="miusuario">
+        <label for="username" class="form-label">Nombre de usuario</label>
+        <input type="text" class="form-control" id="username" name="username" ngModel required>
+        <div class="error-message" *ngIf="errorMessages['Usuario']">
+            <i class="fas fa-exclamation-circle"></i> {{ errorMessages['Usuario'] }}
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="email" class="form-label">Correo Electrónico</label>
+        <input type="email" class="form-control" id="email" name="email" ngModel required>
+        <div class="error-message" *ngIf="errorMessages['Correo']">
+            <i class="fas fa-exclamation-circle"></i> {{ errorMessages['Correo'] }}
+        </div>
     </div>
     <div class="col-md-4">
-        <label for="inputPassword5" class="form-label">Contraseña</label>
-        <input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock">
-            <div id="passwordHelpBlock" class="form-text">
-                Tu contraseña debe tener de 8-20 carácteres, contener letras y numeros y al menos un caracter especial, sin espacios.
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-                <label class="form-check-label" for="flexCheckChecked">He leído y acepto la</label>
-            </div>
+        <label for="password" class="form-label">Contraseña</label>
+        <input type="password" id="password" class="form-control" name="password" ngModel required>
+        <div id="passwordHelpBlock" class="form-text">
+            Tu contraseña debe tener de 8-20 carácteres, contener letras y numeros y al menos un caracter especial, sin espacios.
+        </div>
+        <div class="error-message" *ngIf="errorMessages['Contrasena']">
+            <i class="fas fa-exclamation-circle"></i> {{ errorMessages['Contrasena'] }}
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" required>
+            <label class="form-check-label" for="flexCheckChecked">He leído y acepto la</label>
+        </div>
         <p><a class="link-opacity-50-hover" href="/privacy-policy">política de privacidad</a></p>
-            <div class="buttonRegistrarme">
-                <button type="button" class="btn btn-lg custom-green-button" [routerLink]="['/verify-email']">Registrarme</button>
-            </div>
+        <div class="buttonRegistrarme">
+            <button type="submit" class="btn btn-lg custom-green-button">Registrarme</button>
+        </div>
     </div>
 </form>
+
   
   

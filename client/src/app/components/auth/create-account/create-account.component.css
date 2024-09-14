@@ -71,7 +71,7 @@ h1 {
     width: 375px;
     height: auto;
     position: absolute;
-    left: 795px;
+    left: 835px;
     top: 300px;
 }
 
@@ -80,7 +80,7 @@ h1 {
     width: 375px;
     height: auto;
     position: absolute;
-    left: 795px;
+    left: 835px;
     top: 200px;
 }
 
@@ -89,7 +89,7 @@ h1 {
     width: 375px;
     height: auto;
     position: absolute;
-    left: 795px;
+    left: 835px;
     top: 100px;
 }
 
@@ -103,7 +103,7 @@ h1 {
     height: auto;
     position: absolute;
     top: 155px;
-    left: 187px;
+    left: 167px;
 }
 
 .buttonRegistrarme {
@@ -142,3 +142,14 @@ h5 {
     font-size: 25px;
 }
 
+.error-message {
+    color: #af1919;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.error-message i {
+    margin-right: 5px;
+}
