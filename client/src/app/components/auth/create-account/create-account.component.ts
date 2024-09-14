@@ -74,7 +74,7 @@ export class CreateAccountComponent {
   
 
   onRegister(form: NgForm): void {
-    if (form.valid) {
+    if (this.validateForm(form)) {
       const user = {
         Name_User: form.value.username,
         Email_User: form.value.email,
