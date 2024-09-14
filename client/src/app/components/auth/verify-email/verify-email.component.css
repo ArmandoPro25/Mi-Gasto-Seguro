@@ -1,0 +1,108 @@
+/* Barra de navegación */
+
+.right {
+    margin-left: auto;
+}
+
+.right button {
+    margin-right: 10px;
+}
+
+.left {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.logo {
+    color: black;
+    margin-left: 10px;
+    margin-right: 5px;
+}
+
+.btn {
+    color: black;
+}
+
+.navbar-brand {
+    margin-left: 0;
+    width: 150px;
+    height: auto;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    background-color: rgb(110, 112, 211);
+    height: 80px;
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.left button {
+    margin-right: 5px;
+    color: black;
+  }
+  
+.container-fluid {
+  display: flex;
+  align-items: center;
+}
+
+/* Fondo */
+
+:host {
+    display: block;
+    width: 100%;
+    height: 100vh;
+    background-image: url('https://i.imgur.com/WSzSces.gif');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
+/* Contenido */
+
+h1 {
+    width: 550px;
+    height: auto;
+    position: absolute;
+    left: 200px;
+    top: 100px;
+    margin-top: 3%;
+    font-size: 50px;
+}
+
+.highlight {
+    color: green;
+}
+
+h5 {
+    width: 450px;
+    height: auto;
+    position: absolute;
+    left: 200px;
+    top: 150px;
+    margin-top: 5%;
+    font-size: 25px;
+}
+
+.custom-green-button {
+    background-color: #208839;
+    border-color: #28a745;
+    color: #ffffff;
+    margin-left: 430px;
+    margin-top: 20px;
+}
+  
+.custom-green-button:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+}
+
+ .codigo {
+    margin-top: 240px;
+    margin-left: 200px;
+    width: 380px;
+ }

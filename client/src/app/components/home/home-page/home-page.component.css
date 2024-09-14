@@ -1,0 +1,100 @@
+/* Barra de navegación */
+
+.right {
+    margin-left: auto;
+}
+
+.right button {
+    margin-right: 10px;
+}
+
+.left {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.logo {
+    color: black;
+    margin-left: 10px;
+    margin-right: 5px;
+}
+
+.btn {
+    color: black;
+}
+
+.navbar-brand {
+    margin-left: 0;
+    width: 150px;
+    height: auto;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    background-color: rgb(110, 112, 211);
+    height: 80px;
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.left button {
+    margin-right: 5px;
+    color: black;
+  }
+  
+.container-fluid {
+  display: flex;
+  align-items: center;
+}
+
+
+
+/* Contenido */
+
+.center {
+    width: 350px;
+    height: auto;
+    position: absolute;
+    right: 200px;
+    top: 175px;
+}
+
+h1 {
+    width: 550px;
+    height: auto;
+    position: absolute;
+    left: 200px;
+    top: 100px;
+    margin-top: 3%;
+    font-size: 50px;
+}
+
+h5 {
+    width: 350px;
+    height: auto;
+    position: absolute;
+    left: 200px;
+    top: 150px;
+    margin-top: 5%;
+    font-size: 25px;
+}
+
+.button2 {
+    width: 200px;
+    height: 60px;
+    font-size: 1.2em;
+    padding: 10px 20px;
+    position: absolute;
+    margin-top: 15%;
+    left: -15px;
+}
+
+.text2 {
+    margin-top: 185px;
+}
+
+.highlight {
+    color: green;
+}

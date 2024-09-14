@@ -1,0 +1,144 @@
+/* Barra de navegación */
+
+.right {
+    margin-left: auto;
+}
+
+.right button {
+    margin-right: 10px;
+}
+
+.left {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.logo {
+    color: black;
+    margin-left: 10px;
+    margin-right: 5px;
+}
+
+.btn {
+    color: black;
+}
+
+.navbar-brand {
+    margin-left: 0;
+    width: 150px;
+    height: auto;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    background-color: rgb(110, 112, 211);
+    height: 80px;
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.left button {
+    margin-right: 5px;
+    color: black;
+  }
+  
+.container-fluid {
+  display: flex;
+  align-items: center;
+}
+
+
+/* Contenido */
+
+h1 {
+    width: 400px;
+    height: auto;
+    position: absolute;
+    left: 150px;
+    top: 100px;
+    margin-top: 3%;
+    font-size: 50px;
+}
+
+.highlight {
+    color: green;
+}
+
+.col-md-4 {
+    color: black;
+    width: 375px;
+    height: auto;
+    position: absolute;
+    left: 795px;
+    top: 300px;
+}
+
+.mb-3 {
+    color: black;
+    width: 375px;
+    height: auto;
+    position: absolute;
+    left: 795px;
+    top: 200px;
+}
+
+.mb-4 {
+    color: black;
+    width: 375px;
+    height: auto;
+    position: absolute;
+    left: 795px;
+    top: 100px;
+}
+
+.form-check {
+    height: auto;
+    position: absolute;
+    top: 155px;
+}
+
+.link-opacity-50-hover {
+    height: auto;
+    position: absolute;
+    top: 155px;
+    left: 187px;
+}
+
+.buttonRegistrarme {
+    height: auto;
+    position: absolute;
+    top: 195px;
+}
+
+.custom-green-button {
+    background-color: #208839;
+    border-color: #28a745;
+    color: #ffffff;
+}
+  
+.custom-green-button:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+ }
+
+.image {
+    width: 865px;
+    margin-left: 515px;
+}
+
+.text2 {
+    margin-top: 175px;
+}
+
+h5 {
+    width: 350px;
+    height: auto;
+    position: absolute;
+    left: 150px;
+    top: 150px;
+    margin-top: 5%;
+    font-size: 25px;
+}
+

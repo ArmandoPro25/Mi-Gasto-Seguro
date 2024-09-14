@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+</head>
+
+<nav class="navbar" style="background-color: #e7f5e6;">
+    <div class="container-fluid">
+        <img src="https://i.imgur.com/MhhJt15.png" [routerLink]="['/home']" class="navbar-brand">
+        <div class="left">
+            <button type="button" class="btn" [routerLink]="['/home']"><h4>Inicio</h4></button>
+            <button type="button" class="btn"><h4>Gastos</h4></button>
+        </div>
+        <div class="right">
+            <button type="button" class="btn btn-outline-success" [routerLink]="['/create-account']">Registrarse</button>
+        </div>
+    </div>
+</nav>
+
+<h1>
+    Inicia Sesión en Mi <span class="highlight">Gasto</span> Seguro
+</h1>
+
+<img src="https://i.imgur.com/yOlKMiJ.png" class="no-center">
+<img src="https://tse3.mm.bing.net/th?id=OIG2.4fZUMt.wtCIzu33_cmYC&pid=ImgGn" class="center">
+
+<form class="row g-3">
+    <div class="col-md-4">
+        <label for="validationTooltipUsername" class="form-label">Nombre de Usuario</label>
+        <div class="input-group has-validation">
+            <span class="input-group-text" id="validationTooltipUsernamePrepend">&#64;</span>
+            <input type="text" class="form-control" id="validationTooltipUsername" aria-describedby="validationTooltipUsernamePrepend" required>
+                <div class="invalid-tooltip">
+                    Por favor ingrese su nombre de usuario o correo electronico.
+                </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <label for="validationTooltip05" class="form-label">Contraseña</label>
+            <div class="input-group">
+                <input [type]="passwordFieldType" class="form-control" id="validationTooltip05" required>
+                    <div class="invalid-tooltip">
+                        Por favor ingrese su contraseña.
+                    </div>
+            </div>
+    </div>
+    
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+        <label class="form-check-label" for="flexCheckChecked">
+            Recordar usuario
+        </label>
+    </div>    
+    <p><a class="link-opacity-50-hover" href="/change-pass-email">Olvide mi contraseña</a></p>
+    <div class="login">
+        <div class="buttonLogin">
+            <button type="button" class="btn btn-lg custom-green-button" [routerLink]="['/home-user']">Iniciar Sesión</button>
+        </div>
+    <a>o</a>
+    <div class="buttonRegistrarme">
+        <button type="button" class="btn btn-secondary btn-lg" [routerLink]="['/create-account']">Registrarme</button>
+    </div>
+    <div class="google-signin">
+        <button type="button" class="btn btn-google">
+            <i class="fab fa-google"></i> Continuar con Google
+        </button>
+    </div>
+    </div>
+</form>

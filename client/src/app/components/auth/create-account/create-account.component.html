@@ -1,0 +1,50 @@
+<nav class="navbar" style="background-color: #e7f5e6;">
+    <div class="container-fluid">
+        <img src="https://i.imgur.com/MhhJt15.png" [routerLink]="['/home']" class="navbar-brand">
+    <div class="left">
+        <button type="button" class="btn" [routerLink]="['/home']"><h4>Inicio</h4></button>
+        <button type="button" class="btn"><h4>Gastos</h4></button>
+    </div>
+    <div class="right">
+        <button type="button" class="btn btn-outline-success" [routerLink]="['/login']">Iniciar Sesión</button>
+    </div>
+    </div>
+</nav>
+  
+<h1>
+    Registrate en Mi <span class="highlight">Gasto</span> Seguro
+</h1>
+
+<h5 class="text2">
+    ¡Olvidate de las hojas de calculo y manten
+    organizados cada uno de tus gastos con "Mi Gasto Seguro"!
+</h5>
+  
+<form class="row g-3">
+    <img src="https://i.imgur.com/gqJrHHl.png" class="image">
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Correo Electronico</label>
+        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="nombre@ejemplo.com">
+    </div>
+    <div class="mb-4">
+        <label for="exampleFormControlInput1" class="form-label">Nombre de usuario</label>
+        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="miusuario">
+    </div>
+    <div class="col-md-4">
+        <label for="inputPassword5" class="form-label">Contraseña</label>
+        <input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock">
+            <div id="passwordHelpBlock" class="form-text">
+                Tu contraseña debe tener de 8-20 carácteres, contener letras y numeros y al menos un caracter especial, sin espacios.
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                <label class="form-check-label" for="flexCheckChecked">He leído y acepto la</label>
+            </div>
+        <p><a class="link-opacity-50-hover" href="/privacy-policy">política de privacidad</a></p>
+            <div class="buttonRegistrarme">
+                <button type="button" class="btn btn-lg custom-green-button" [routerLink]="['/verify-email']">Registrarme</button>
+            </div>
+    </div>
+</form>
+  
+  

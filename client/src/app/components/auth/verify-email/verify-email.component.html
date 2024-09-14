@@ -1,0 +1,23 @@
+<nav class="navbar" style="background-color: #e7f5e6;">
+    <div class="container-fluid">
+        <img src="https://i.imgur.com/MhhJt15.png" [routerLink]="['/home']" class="navbar-brand">
+        <div class="left">
+            <button type="button" class="btn" [routerLink]="['/home']"><h4>Inicio</h4></button>
+            <button type="button" class="btn"><h4>Gastos</h4></button>
+        </div>
+        <div class="right">
+            <button type="button" class="btn btn-outline-success" [routerLink]="['/login']">Iniciar Sesión</button>
+        </div>
+    </div>
+</nav>
+
+<h1>Validemos tu <span class="highlight">Email</span></h1>
+
+<h5>
+    Ingresa el código que mandamos al correo <span class="highlight">correo&#64;example.com</span>
+</h5>
+
+<div class="codigo">
+    <input class="form-control form-control-lg" type="text" placeholder="Ingresar código" aria-label=".form-control-lg example">
+</div>
+<button type="button" class="btn btn-lg custom-green-button" [routerLink]="['/type-user']">Enviar código</button>
