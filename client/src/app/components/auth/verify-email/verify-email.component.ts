@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../../services/user.service';
 import { ApiResponse } from '../../../interfaces/apiResponse.interface';
 import { Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-verify-email',
@@ -9,12 +10,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./verify-email.component.css']
 })
 export class VerifyEmailComponent implements OnInit {
-  email: string = ''; // Variable para almacenar el email
+  email: string = ''; 
 
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private userService: UserService, private router: Router, private titleService: Title) { }
 
   ngOnInit(): void {
-    // Obtener el email del localStorage cuando el componente se inicializa
+    this.titleService.setTitle('Verificar Email')
     this.email = localStorage.getItem('emailForVerification') || '';
     if (!this.email) {
       console.error('No email found for verification');
@@ -29,11 +30,9 @@ export class VerifyEmailComponent implements OnInit {
         (response: ApiResponse) => {
           console.log('Email verified', response);
           if (response.success) {
-            // Almacenar el Id_User y Type_User en el localStorage
             localStorage.setItem('Id_User', response.Id_User || '');
             localStorage.setItem('Type_User', response.Type_User || '');
 
-            // Redirigir a la página de tipo de usuario
             this.router.navigate(['/type-user']);
           } else {
             console.error('Verification failed', response.message);

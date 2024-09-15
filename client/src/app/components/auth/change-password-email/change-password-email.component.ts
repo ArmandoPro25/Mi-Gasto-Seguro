@@ -1,17 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../../../services/user.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-change-password-email',
   templateUrl: './change-password-email.component.html',
   styleUrls: ['./change-password-email.component.css']
 })
-export class ChangePasswordEmailComponent {
-  email: string = '';  // Email que el usuario ingresa
+export class ChangePasswordEmailComponent implements OnInit{
+  email: string = '';
 
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private userService: UserService, private router: Router, private titleService: Title) { }
 
+  ngOnInit(): void {
+    this.titleService.setTitle('Cambiar Contraseña');
+  }
   sendRecoveryEmail(): void {
     if (this.email) {
       this.userService.checkEmailExists(this.email).subscribe(
@@ -19,10 +23,8 @@ export class ChangePasswordEmailComponent {
           if (response.success) {
             console.log('Correo de recuperación enviado', response.message);
 
-            // Redirigir a la página donde el usuario ingresa el código de verificación
             this.router.navigate(['/change-pass-code']);
 
-            // Enviar el correo de recuperación
             this.userService.sendPasswordRecoveryEmail(this.email).subscribe(
               recoveryResponse => {
                 console.log('Correo de recuperación enviado con éxito');

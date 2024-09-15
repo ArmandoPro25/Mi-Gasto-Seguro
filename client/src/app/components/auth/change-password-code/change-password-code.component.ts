@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../../../services/user.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-change-password-code',
@@ -11,9 +12,10 @@ export class ChangePasswordCodeComponent implements OnInit {
   verificationCode: string = '';
   email: string | null = '';
 
-  constructor(private userService: UserService, private router: Router) {}
+  constructor(private userService: UserService, private router: Router, private titleService: Title) {}
 
   ngOnInit(): void {
+    this.titleService.setTitle('Cambiar Contraseña')
     if (typeof window !== 'undefined') {
       this.email = localStorage.getItem('userEmail');
     }

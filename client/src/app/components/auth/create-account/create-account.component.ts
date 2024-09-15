@@ -1,19 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { UserService } from '../../../services/user.service';
 import { ApiResponse } from '../../../interfaces/apiResponse.interface';
 import { Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-create-account',
   templateUrl: './create-account.component.html',
   styleUrls: ['./create-account.component.css']
 })
-export class CreateAccountComponent {
+export class CreateAccountComponent implements OnInit {
   errorMessages: { [key: string]: string } = {};
 
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private userService: UserService, private router: Router, private titleServivce: Title) { }
 
+  ngOnInit(): void {
+      this.titleServivce.setTitle('Crear Cuenta')
+  }
   validateForm(form: NgForm): boolean {
     this.errorMessages = {};
   
