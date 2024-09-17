@@ -38,7 +38,12 @@ export class UserService {
   }
   
   verifyRecoveryCode(email: string, code: string): Observable<ApiResponse> {
-    return this.http.post<ApiResponse>(`${this.API_URI}/verify-recovery-code`, { email, code });
+    return this.http.get<ApiResponse>(`${this.API_URI}/verify-recovery-code`, { params: { email, code } });
+}
+
+
+  updatePassword(email: string, newPassword: string): Observable<ApiResponse> {
+    return this.http.put<ApiResponse>(`${this.API_URI}/update-password`, { email, newPassword });
 }
 
 }

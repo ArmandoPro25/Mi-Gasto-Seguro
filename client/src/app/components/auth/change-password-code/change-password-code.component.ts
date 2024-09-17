@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../../../services/user.service';
 import { Title } from '@angular/platform-browser';
+import { ApiResponse } from '../../../interfaces/apiResponse.interface';
 
 @Component({
   selector: 'app-change-password-code',
@@ -10,34 +11,38 @@ import { Title } from '@angular/platform-browser';
 })
 export class ChangePasswordCodeComponent implements OnInit {
   verificationCode: string = '';
-  email: string | null = '';
+  email: string = '';
 
   constructor(private userService: UserService, private router: Router, private titleService: Title) {}
 
   ngOnInit(): void {
     this.titleService.setTitle('Cambiar Contraseña')
-    if (typeof window !== 'undefined') {
-      this.email = localStorage.getItem('userEmail');
+    this.email = localStorage.getItem('emailForVerification') || '';
+    if (!this.email) {
+      console.error('No email found for verification');
     }
   }
 
-  onSubmit() {
-    console.log('Verifying email and code', this.email, this.verificationCode);
-    if (this.email && this.verificationCode) {
-      this.userService.verifyRecoveryCode(this.email, this.verificationCode).subscribe(
-        response => {
-          console.log('Server response:', response);
+  onVerify(): void {
+    const code = (document.getElementById('verificationCode') as HTMLInputElement)?.value;
+
+    if (code && this.email) {
+      this.userService.verifyEmail(this.email, code).subscribe(
+        (response: ApiResponse) => {
+          console.log('Email verified', response);
           if (response.success) {
+            localStorage.setItem('emailOfUser', this.email);
             this.router.navigate(['/change-pass']);
           } else {
-            alert('Código de verificación inválido');
+            console.error('Verification failed', response.message);
           }
         },
         error => {
-          console.error('Error al verificar el código', error);
-          alert('Ocurrió un error. Por favor, intenta de nuevo.');
+          console.error('Error verifying email', error);
         }
       );
+    } else {
+      console.warn('Verification code is missing or email is not available');
     }
   }
 }

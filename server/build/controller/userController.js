@@ -136,6 +136,45 @@ class UserController {
             }
         });
     }
+    updatePassword(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { email, newPassword } = req.body;
+            if (!email || !newPassword) {
+                res.status(400).json({ success: false, message: 'Email y nueva contraseña son requeridos' });
+                return;
+            }
+            try {
+                // Actualiza la contraseña del usuario basado en el email
+                const result = yield database_1.default.query('UPDATE User SET Password_User = ? WHERE Email_User = ?', [newPassword, email]);
+                if (result.affectedRows > 0) {
+                    res.json({ success: true, message: 'Contraseña actualizada correctamente' });
+                }
+                else {
+                    res.status(404).json({ success: false, message: 'Prueba del controller' });
+                }
+            }
+            catch (err) {
+                res.status(500).json({ success: false, message: 'Error al actualizar la contraseña' });
+            }
+        });
+    }
+    verifyRecoveryCode(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const { email, code } = req.body;
+                const result = yield database_1.default.query('SELECT * FROM User WHERE Email_User = ? AND VerificationCode = ?', [email, code]);
+                if (result.affectedRows > 0) {
+                    res.json({ success: true, message: 'Contraseña actualizada correctamente' });
+                }
+                else {
+                    res.status(404).json({ success: false, message: 'Usuario no encontrado' });
+                }
+            }
+            catch (err) {
+                res.status(500).json({ error: 'Error al actualizar la contraseña' });
+            }
+        });
+    }
 }
 exports.userController = new UserController();
 exports.default = exports.userController;

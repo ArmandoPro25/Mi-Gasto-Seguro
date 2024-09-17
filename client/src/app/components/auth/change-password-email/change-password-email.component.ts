@@ -24,7 +24,7 @@ export class ChangePasswordEmailComponent implements OnInit{
             console.log('Correo de recuperación enviado', response.message);
 
             this.router.navigate(['/change-pass-code']);
-
+            localStorage.setItem('emailForVerification', this.email);
             this.userService.sendPasswordRecoveryEmail(this.email).subscribe(
               recoveryResponse => {
                 console.log('Correo de recuperación enviado con éxito');
