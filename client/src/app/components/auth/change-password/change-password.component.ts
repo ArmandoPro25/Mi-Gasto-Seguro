@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../../services/user.service';
 import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
-import { ApiResponse } from '../../../interfaces/apiResponse.interface';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-change-password',
@@ -13,6 +13,7 @@ export class ChangePasswordComponent implements OnInit {
   newPass: string = '';
   confirmPassword: string = '';
   email: string = '';
+  errorMessages: { [key: string]: string } = {}; // Para guardar los mensajes de error
 
   constructor(private userService: UserService, private router: Router, private titleService: Title) {}
 
@@ -24,31 +25,46 @@ export class ChangePasswordComponent implements OnInit {
     }
   }
 
-  onSubmit(): void {
+  validateForm(): boolean {
+    this.errorMessages = {};
+
+    // Validar nueva contraseña
+    if (!this.isValidPassword(this.newPass)) {
+      this.errorMessages['Contrasena'] = 'Tu contraseña debe tener de 8-20 caracteres, contener letras y números y al menos un carácter especial, sin espacios.';
+    }
+
+    // Validar que las contraseñas coincidan
     if (this.newPass !== this.confirmPassword) {
-      alert('Las contraseñas no coinciden');
-      return;
+      this.errorMessages['ConfirmarContrasena'] = 'Las contraseñas no coinciden';
     }
-  
-    if (this.newPass.length < 8) {
-      alert('La contraseña debe tener al menos 8 caracteres');
-      return;
-    }
-  
-    this.userService.updatePassword(this.email, this.newPass).subscribe(
-      (response: ApiResponse) => {
-        if (response.success) {
-          alert('Contraseña actualizada correctamente');
-          this.router.navigate(['/login']);
-        } else {
-          alert('Error al actualizar la contraseña');
-        }
-      },
-      (error) => {
-        console.error('Error:', error);
-        alert('Ocurrió un error al actualizar la contraseña');
-      }
-    );
+
+    // Retornar true si no hay errores
+    return Object.keys(this.errorMessages).length === 0;
   }
-  
+
+  isValidPassword(password: string): boolean {
+    const regex = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[\W_])[a-zA-Z\d\W_]{8,20}$/;
+    return regex.test(password);
+  }
+
+  onSubmit(): void {
+    // Validar el formulario antes de intentar cambiar la contraseña
+    if (this.validateForm()) {
+      // Si no hay errores, proceder a cambiar la contraseña
+      this.userService.updatePassword(this.email, this.newPass).subscribe(
+        (response) => {
+          if (response.success) {
+            alert('Contraseña actualizada correctamente');
+            this.router.navigate(['/login']);
+          } else {
+            alert('Error al actualizar la contraseña');
+          }
+        },
+        (error) => {
+          console.error('Error:', error);
+          alert('Ocurrió un error al actualizar la contraseña');
+        }
+      );
+    }
+  }
 }

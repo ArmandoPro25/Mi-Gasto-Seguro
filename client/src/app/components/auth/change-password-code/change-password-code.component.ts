@@ -23,6 +23,7 @@ export class ChangePasswordCodeComponent implements OnInit {
     }
   }
 
+
   onVerify(): void {
     const code = (document.getElementById('verificationCode') as HTMLInputElement)?.value;
 
