@@ -28,8 +28,17 @@ const sendVerificationEmail = (to, code) => __awaiter(void 0, void 0, void 0, fu
     const mailOptions = {
         from: 'migastoseguro@gmail.com',
         to,
-        subject: 'Verify your email',
-        text: `Your verification code is ${code}`
+        subject: 'Verifiquemos tu cuenta',
+        html: `
+            <div style="font-family: Arial, sans-serif; padding: 20px; border: 1px solid #ddd;">
+                <h2 style="color: #007BFF;">Verifiquemos tu cuenta</h2>
+                <p>Gracias por registrarte en <strong>Mi Gasto Seguro</strong>.</p>
+                <p>Tu código de verificación es:</p>
+                <h3 style="color: #28a745;">${code}</h3>
+                <p>Por favor, ingresa este código en la página de verificación para activar tu cuenta.</p>
+                <p>Saludos,<br/>El equipo de Mi Gasto Seguro</p>
+            </div>
+        `
     };
     try {
         yield transporter.sendMail(mailOptions);
@@ -41,22 +50,28 @@ const sendVerificationEmail = (to, code) => __awaiter(void 0, void 0, void 0, fu
 });
 exports.sendVerificationEmail = sendVerificationEmail;
 const sendRecoveryEmail = (email, recoveryCode) => __awaiter(void 0, void 0, void 0, function* () {
-    const transporter = nodemailer_1.default.createTransport({
-        service: 'gmail',
-        auth: {
-            user: 'migastoseguro@gmail.com',
-            pass: 'f p e n x x k y g f v a o c j s',
-        },
-        tls: {
-            rejectUnauthorized: false
-        }
-    });
     const mailOptions = {
         from: 'migastoseguro@gmail.com',
         to: email,
         subject: 'Recuperación de contraseña',
-        text: `Usa este código para recuperar tu contraseña: ${recoveryCode}`,
+        html: `
+            <div style="font-family: Arial, sans-serif; padding: 20px; border: 1px solid #ddd;">
+                <h2 style="color: #dc3545;">Recuperación de contraseña</h2>
+                <p>Solicitaste recuperar tu contraseña en <strong>Mi Gasto Seguro</strong>.</p>
+                <p>Tu código de recuperación es:</p>
+                <h3 style="color: #28a745;">${recoveryCode}</h3>
+                <p>Ingresa este código en la página de recuperación para establecer una nueva contraseña.</p>
+                <p>Si no solicitaste esto, por favor ignora este correo.</p>
+                <p>Saludos,<br/>El equipo de Mi Gasto Seguro</p>
+            </div>
+        `
     };
-    yield transporter.sendMail(mailOptions);
+    try {
+        yield transporter.sendMail(mailOptions);
+        console.log('Recovery email sent');
+    }
+    catch (error) {
+        console.error('Error sending email:', error);
+    }
 });
 exports.sendRecoveryEmail = sendRecoveryEmail;

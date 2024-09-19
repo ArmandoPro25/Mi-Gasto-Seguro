@@ -49,3 +49,12 @@
   align-items: center;
 }
 
+.FinanciebotAI {
+    width: 350px;
+    height: auto;
+    height: 20px;
+    position: absolute;
+    right: 40px;
+    top: 145px;
+}
+

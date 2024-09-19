@@ -11,3 +11,4 @@ CREATE TABLE User (
     VerificationCode VARCHAR(6),
     Verified BOOLEAN DEFAULT FALSE
 );
+

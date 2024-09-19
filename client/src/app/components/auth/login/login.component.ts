@@ -48,16 +48,14 @@ export class LoginComponent implements OnInit {
     this.userService.authenticate(username, password).subscribe(
       (response: any) => {
         if (response.success) {
-          const { Type_User, Id_User } = response; // Obtener `Id_User` de la respuesta
+          const { Type_User, Id_User } = response;
           
-          // Guardar el nombre de usuario si se seleccionó "Recordarme"
           if (this.rememberMe) {
             localStorage.setItem('savedUsername', username);
           } else {
             localStorage.removeItem('savedUsername');
           }
   
-          // Redirigir a la página correspondiente y pasar `Id_User` como queryParams
           this.router.navigate([`/home-user-type-${Type_User}`], { queryParams: { Id_User } });
         }
       },

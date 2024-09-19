@@ -12,12 +12,11 @@ class UserRoutes {
         this.router.post('/authenticate',userController.authenticate);
         this.router.post('/',userController.create);
         this.router.post('/verify-email', userController.verifyEmail);
-        this.router.put('/:idUser', userController.typeUser);
+        this.router.put('/type/:idUser', userController.typeUser);
         this.router.get('/check-email', userController.checkEmailExists);
         this.router.post('/send-recovery-email', userController.sendRecoveryEmail);
         this.router.get('/verify-recovery-code', userController.verifyRecoveryCode);
         this.router.put('/update-password', userController.updatePassword);
-
     }
 }
 

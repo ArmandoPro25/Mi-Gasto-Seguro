@@ -26,7 +26,7 @@ export class UserService {
   }
 
   updateTypeUser(Id_User: string, Type_User: number): Observable<ApiResponse> {
-    return this.http.put<ApiResponse>(`${this.API_URI}/${Id_User}`, { Type_User });
+    return this.http.put<ApiResponse>(`${this.API_URI}/type/${Id_User}`, { Type_User });
   }
 
   checkEmailExists(email: string): Observable<ApiResponse> {
@@ -39,11 +39,10 @@ export class UserService {
   
   verifyRecoveryCode(email: string, code: string): Observable<ApiResponse> {
     return this.http.get<ApiResponse>(`${this.API_URI}/verify-recovery-code`, { params: { email, code } });
-}
+  }
 
-
-  updatePassword(email: string, newPassword: string): Observable<ApiResponse> {
-    return this.http.put<ApiResponse>(`${this.API_URI}/update-password`, { email, newPassword });
-}
-
+  updatePassword(email: string, newPass: string): Observable<ApiResponse> {
+    return this.http.put<ApiResponse>(`${this.API_URI}/update-password`, { email, newPass });
+  }
+  
 }

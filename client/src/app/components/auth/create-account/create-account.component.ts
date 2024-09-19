@@ -83,14 +83,13 @@ export class CreateAccountComponent implements OnInit {
         Name_User: form.value.username,
         Email_User: form.value.email,
         Password_User: form.value.password,
-        Type_User: 1 // O el tipo de usuario que desees
+        Type_User: 1
       };
       this.userService.register(user).subscribe(
         (response: ApiResponse) => {
           console.log('User registered', response);
-          // Guardar el correo en localStorage para usarlo luego en la verificación
           localStorage.setItem('emailForVerification', user.Email_User);
-          this.router.navigate(['/verify-email']); // Redirige a la página de verificación de correo electrónico
+          this.router.navigate(['/verify-email']);
         },
         error => {
           console.error('Error registering user', error);
