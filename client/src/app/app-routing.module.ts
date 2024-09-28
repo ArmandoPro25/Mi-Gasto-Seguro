@@ -17,6 +17,10 @@ import { BusinessIncomeComponent } from './components/tables-user-type2/business
 import { BusinessReportComponent } from './components/tables-user-type2/business-report/business-report.component';
 import { MyAccountComponent } from './components/home/my-account/my-account.component';
 import { WelcomeUserComponent } from './components/home/welcome-user/welcome-user.component';
+import { PersonalIncomeFromComponent } from './components/tables-user-type1/personal-income-from/personal-income-from.component';
+import { PersonalExpenseFromComponent } from './components/tables-user-type1/personal-expense-from/personal-expense-from.component';
+import { BusinessIncomeFromComponent } from './components/tables-user-type2/business-income-from/business-income-from.component';
+import { BusinessExpenseFromComponent } from './components/tables-user-type2/business-expense-from/business-expense-from.component';
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomePageComponent }, 
@@ -35,7 +39,11 @@ const routes: Routes = [
   { path: 'business-income', component: BusinessIncomeComponent },
   { path: 'business-report', component: BusinessReportComponent },
   { path: 'my-account', component: MyAccountComponent },
-  { path: 'welcome-user', component: WelcomeUserComponent }
+  { path: 'welcome-user', component: WelcomeUserComponent },
+  { path: 'personal-income-form', component: PersonalIncomeFromComponent },
+  { path: 'personal-expense-form', component: PersonalExpenseFromComponent },
+  { path: 'business-income-form', component: BusinessIncomeFromComponent },
+  { path: 'business-expense-form', component: BusinessExpenseFromComponent }
 ];
 
 @NgModule({
