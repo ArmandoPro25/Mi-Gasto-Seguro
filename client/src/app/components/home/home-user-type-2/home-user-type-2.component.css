@@ -57,3 +57,75 @@
     right: 40px;
     top: 145px;
 }
+
+/* Contenido */
+
+.buttonNew {
+    height: auto;
+    position: absolute;
+    top: 15%;
+    left: 5%;
+}
+
+.custom-green-button {
+    background-color: #5db672;
+    border-color: #8ae9a0;
+    color: #ffffff;
+}
+  
+.custom-green-button:hover {
+    background-color: #46dd67;
+    border-color: #68e685;
+}
+
+h1 {
+    width: 550px;
+    height: auto;
+    position: absolute;
+    left: 200px;
+    top: 50px;
+    margin-top: 3%;
+    font-size: 50px;
+}
+
+.highlight {
+    color: green;
+}
+
+.expenses-table {
+    width: 60%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 15px;
+    border-radius: 25px;
+    align-items: center;
+    margin-left: 5%;
+    margin-top: 8%;
+}
+
+.expenses-table th,
+.expenses-table td {
+    border: 1px solid black;
+    padding: 10px;
+    text-align: center;
+}
+
+.expenses-table th {
+    background-color: #49454f;
+    color: white;
+}
+
+.expenses-table th:first-child,
+.expenses-table td:first-child {
+    width: 55%;
+}
+
+.expenses-table th:nth-child(2),
+.expenses-table td:nth-child(2) {
+    width: 20%;
+}
+
+.expenses-table th:last-child,
+.expenses-table td:last-child {
+    width: 25%;
+}

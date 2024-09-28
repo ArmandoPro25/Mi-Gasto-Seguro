@@ -1,0 +1,30 @@
+<nav class="navbar" style="background-color: #e7f5e6;">
+    <div class="container-fluid">
+        <img src="https://i.imgur.com/MhhJt15.png" [routerLink]="['/home']" class="navbar-brand">
+        <div class="left">
+            <button type="button" class="btn" [routerLink]="['/home']"><h4>Inicio</h4></button>
+            <button type="button" class="btn"><h4>Gastos</h4></button>
+        </div>
+        <div class="right">
+            <button type="button" class="btn btn-outline-success">Mi cuenta</button>
+        </div>
+    </div>
+</nav>
+
+<h1>
+    ¡Bienvenido <span class="highlight">usuario</span>!
+</h1>
+
+<div class="video">
+    <iframe width="960" height="415" [src]="defaultVideoUrl" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+</div>
+
+<div *ngFor="let video of videos">
+    <h3>{{ video.snippet.title }}</h3>
+    <iframe width="560" height="315" [src]="getSafeUrl(video.id.videoId)" frameborder="0" allowfullscreen></iframe>
+    <p>{{ video.snippet.description }}</p>
+</div>
+
+<div class="buttonSkip">
+    <button class="btn btn-lg custom-green-button" (click)="skip()">Saltar</button>
+</div>

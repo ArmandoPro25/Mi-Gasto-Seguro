@@ -15,6 +15,8 @@ import { PersonalIncomeComponent } from './components/tables-user-type1/personal
 import { PersonalReportComponent } from './components/tables-user-type1/personal-report/personal-report.component';
 import { BusinessIncomeComponent } from './components/tables-user-type2/business-income/business-income.component';
 import { BusinessReportComponent } from './components/tables-user-type2/business-report/business-report.component';
+import { MyAccountComponent } from './components/home/my-account/my-account.component';
+import { WelcomeUserComponent } from './components/home/welcome-user/welcome-user.component';
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomePageComponent }, 
@@ -31,7 +33,9 @@ const routes: Routes = [
   { path: 'personal-income', component: PersonalIncomeComponent },
   { path: 'personal-report', component: PersonalReportComponent },
   { path: 'business-income', component: BusinessIncomeComponent },
-  { path: 'business-report', component: BusinessReportComponent }
+  { path: 'business-report', component: BusinessReportComponent },
+  { path: 'my-account', component: MyAccountComponent },
+  { path: 'welcome-user', component: WelcomeUserComponent }
 ];
 
 @NgModule({

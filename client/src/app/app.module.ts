@@ -25,6 +25,7 @@ import { PersonalIncomeComponent } from './components/tables-user-type1/personal
 import { PersonalReportComponent } from './components/tables-user-type1/personal-report/personal-report.component';
 import { BusinessIncomeComponent } from './components/tables-user-type2/business-income/business-income.component';
 import { BusinessReportComponent } from './components/tables-user-type2/business-report/business-report.component';
+import { WelcomeUserComponent } from './components/home/welcome-user/welcome-user.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { BusinessReportComponent } from './components/tables-user-type2/business
     PersonalIncomeComponent,
     PersonalReportComponent,
     BusinessIncomeComponent,
-    BusinessReportComponent
+    BusinessReportComponent,
+    WelcomeUserComponent
   ],
   imports: [
     BrowserModule,

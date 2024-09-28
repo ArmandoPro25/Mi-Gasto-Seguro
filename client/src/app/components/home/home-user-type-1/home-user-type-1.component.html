@@ -1,40 +1,58 @@
 <nav class="navbar" style="background-color: #e7f5e6;">
-    <div class="container-fluid">
-        <img src="https://i.imgur.com/MhhJt15.png" [routerLink]="['/home']" class="navbar-brand">
-        <div class="left">
-            <button type="button" class="btn" [routerLink]="['/home']"><h4>Inicio</h4></button>
-            <button type="button" class="btn"><h4>Gastos</h4></button>
-            <button type="button" class="btn" [routerLink]="['/personal-income']"><h4>Ingresos</h4></button>
-            <button type="button" class="btn" [routerLink]="['/personal-report']"><h4>Informe</h4></button>
-        </div>
-        <div class="right">
-            <button type="button" class="btn btn-outline-success" [routerLink]="['/my-account']">Mi cuenta</button>
-        </div>
-    </div>
+  <div class="container-fluid">
+      <img src="https://i.imgur.com/MhhJt15.png" [routerLink]="['/home']" class="navbar-brand">
+      <div class="left">
+          <button type="button" class="btn" [routerLink]="['/home']"><h4>Inicio</h4></button>
+          <button type="button" class="btn"><h4>Gastos</h4></button>
+          <button type="button" class="btn" [routerLink]="['/business-income']"><h4>Ingresos</h4></button>
+          <button type="button" class="btn" [routerLink]="['/business-report']"><h4>Informe</h4></button>
+      </div>
+      <div class="right">
+        <button type="button" class="btn btn-outline-success" [routerLink]="['/my-account']">Mi cuenta</button>
+      </div>
+  </div>
 </nav>
 
+<div class="buttonNew">
+<button class="btn btn-lg custom-green-button"> + Nuevo</button>
+</div>
+
 <h1>
-    PAGINA DE GASTOS PERSONALES
+Mis <span class="highlight">gastos</span>.
 </h1>
 
+<table class="expenses-table">
+  <thead>
+    <tr>
+      <th>Descripcion</th>
+      <th>Monto</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr >
+      <td>{{'Descripción'}}</td>
+      <td>$ {{'1500'}}</td>
+      <td>{{'Ver detalle'}}</td>
+
 <div class="FinanciebotAI">
-    <iframe
-      src="https://www.chatbase.co/chatbot-iframe/Cwk1qX0MPWZoZvmRSjMxu"
-      width="100%"
-      style="height: 400px; min-height: 400px;"
-      frameborder="0"
-    ></iframe>
-  
-    <script>
-      window.embeddedChatbotConfig = {
-        chatbotId: "Cwk1qX0MPWZoZvmRSjMxu",
-        domain: "www.chatbase.co",
-      };
-    </script>
-    <script
-      src="https://www.chatbase.co/embed.min.js"
-      chatbotId="Cwk1qX0MPWZoZvmRSjMxu"
-      domain="www.chatbase.co"
-      defer
-    ></script>
-  </div>
+  <iframe
+    src="https://www.chatbase.co/chatbot-iframe/Cwk1qX0MPWZoZvmRSjMxu"
+    width="100%"
+    style="height: 400px; min-height: 400px;"
+    frameborder="0"
+  ></iframe>
+
+  <script>
+    window.embeddedChatbotConfig = {
+      chatbotId: "Cwk1qX0MPWZoZvmRSjMxu",
+      domain: "www.chatbase.co",
+    };
+  </script>
+  <script
+    src="https://www.chatbase.co/embed.min.js"
+    chatbotId="Cwk1qX0MPWZoZvmRSjMxu"
+    domain="www.chatbase.co"
+    defer
+  ></script>
+</div>

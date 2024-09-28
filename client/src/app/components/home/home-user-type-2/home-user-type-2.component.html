@@ -8,14 +8,32 @@
             <button type="button" class="btn" [routerLink]="['/business-report']"><h4>Informe</h4></button>
         </div>
         <div class="right">
-            <button type="button" class="btn btn-outline-success" [routerLink]="['/login']">Mi cuenta</button>
+          <button type="button" class="btn btn-outline-success" [routerLink]="['/my-account']">Mi cuenta</button>
         </div>
     </div>
 </nav>
 
+<div class="buttonNew">
+  <button class="btn btn-lg custom-green-button"> + Nuevo</button>
+</div>
+
 <h1>
-    PAGINA DE GASTOS EMPRESARIALES
+  Mis <span class="highlight">gastos</span>.
 </h1>
+
+  <table class="expenses-table">
+    <thead>
+      <tr>
+        <th>Descripcion</th>
+        <th>Monto</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr >
+        <td>{{'Descripción'}}</td>
+        <td>$ {{'1500'}}</td>
+        <td>{{'Ver detalle'}}</td>
 
 <div class="FinanciebotAI">
     <iframe
