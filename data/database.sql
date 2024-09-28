@@ -12,3 +12,11 @@ CREATE TABLE User (
     Verified BOOLEAN DEFAULT FALSE
 );
 
+CREATE TABLE PersonalExpenses {
+    Id_User INT NOT NULL,
+    Id_PersonalExpenses INT PRIMARY KEY AUTO_INCREMENT,
+    DescriptionExpense VARCHAR(30) NOT NULL,
+    AmountExpense DECIMAL(2) NOT NULL,
+    TimeExpense DATETIME NOT NULL,
+    PlaceExpense VARCHARi(100) NOT NULL
+}

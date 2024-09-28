@@ -11,7 +11,10 @@ import { HomeUserType1Component } from './components/home/home-user-type-1/home-
 import { HomeUserType2Component } from './components/home/home-user-type-2/home-user-type-2.component';
 import { TypeUserComponent } from './components/home/type-user/type-user.component';
 import { PrivacyPolicyComponent } from './components/docs/privacy-policy/privacy-policy.component';
-
+import { PersonalIncomeComponent } from './components/tables-user-type1/personal-income/personal-income.component';
+import { PersonalReportComponent } from './components/tables-user-type1/personal-report/personal-report.component';
+import { BusinessIncomeComponent } from './components/tables-user-type2/business-income/business-income.component';
+import { BusinessReportComponent } from './components/tables-user-type2/business-report/business-report.component';
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomePageComponent }, 
@@ -24,7 +27,11 @@ const routes: Routes = [
   { path: 'home-user-type-1', component: HomeUserType1Component },
   { path: 'home-user-type-2', component: HomeUserType2Component },
   { path: 'type-user', component: TypeUserComponent },
-  { path: 'privacy-policy', component: PrivacyPolicyComponent }
+  { path: 'privacy-policy', component: PrivacyPolicyComponent },
+  { path: 'personal-income', component: PersonalIncomeComponent },
+  { path: 'personal-report', component: PersonalReportComponent },
+  { path: 'business-income', component: BusinessIncomeComponent },
+  { path: 'business-report', component: BusinessReportComponent }
 ];
 
 @NgModule({

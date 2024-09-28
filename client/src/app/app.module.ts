@@ -20,6 +20,11 @@ import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { PasswordModule } from 'primeng/password';
 import { PrivacyPolicyComponent } from './components/docs/privacy-policy/privacy-policy.component';
+import { MyAccountComponent } from './components/home/my-account/my-account.component';
+import { PersonalIncomeComponent } from './components/tables-user-type1/personal-income/personal-income.component';
+import { PersonalReportComponent } from './components/tables-user-type1/personal-report/personal-report.component';
+import { BusinessIncomeComponent } from './components/tables-user-type2/business-income/business-income.component';
+import { BusinessReportComponent } from './components/tables-user-type2/business-report/business-report.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +39,12 @@ import { PrivacyPolicyComponent } from './components/docs/privacy-policy/privacy
     ChangePasswordCodeComponent,
     ChangePasswordComponent,
     TypeUserComponent,
-    PrivacyPolicyComponent
+    PrivacyPolicyComponent,
+    MyAccountComponent,
+    PersonalIncomeComponent,
+    PersonalReportComponent,
+    BusinessIncomeComponent,
+    BusinessReportComponent
   ],
   imports: [
     BrowserModule,
