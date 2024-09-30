@@ -12,12 +12,18 @@ import { Title } from '@angular/platform-browser';
 })
 export class CreateAccountComponent implements OnInit {
   errorMessages: { [key: string]: string } = {};
+  showPassword: boolean = false;
 
   constructor(private userService: UserService, private router: Router, private titleServivce: Title) { }
 
   ngOnInit(): void {
       this.titleServivce.setTitle('Crear Cuenta')
   }
+
+  togglePasswordVisibility(): void {
+    this.showPassword = !this.showPassword;
+  }
+
   validateForm(form: NgForm): boolean {
     this.errorMessages = {};
   

@@ -17,6 +17,8 @@ class UserRoutes {
         this.router.post('/send-recovery-email', userController.sendRecoveryEmail);
         this.router.get('/verify-recovery-code', userController.verifyRecoveryCode);
         this.router.put('/update-password', userController.updatePassword);
+        this.router.get('/name/:idUser', userController.getUserName);
+        this.router.get('/typeUser/:idUser', userController.getTypeUser)
     }
 }
 

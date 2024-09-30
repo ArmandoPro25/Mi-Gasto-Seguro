@@ -170,6 +170,40 @@ class UserController {
             }
         });
     }
+    getUserName(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { idUser } = req.params;
+            try {
+                const result = yield database_1.default.query('SELECT Name_User FROM User WHERE Id_User = ?', [idUser]);
+                if (result.length > 0) {
+                    res.json({ success: true, name: result[0].Name_User });
+                }
+                else {
+                    res.status(404).json({ success: false, message: 'Usuario no encontrado' });
+                }
+            }
+            catch (err) {
+                res.status(500).json({ error: 'Error al obtener el nombre del usuario' });
+            }
+        });
+    }
+    getTypeUser(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { idUser } = req.params;
+            try {
+                const result = yield database_1.default.query('SELECT Type_User FROM User WHERE Id_User = ?', [idUser]);
+                if (result.length > 0) {
+                    res.json({ success: true, typeUser: result[0].Type_User });
+                }
+                else {
+                    res.status(404).json({ success: false, message: 'Usuario no encontrado' });
+                }
+            }
+            catch (err) {
+                res.status(500).json({ error: 'Error al obtener el tipo de usuario' });
+            }
+        });
+    }
 }
 exports.userController = new UserController();
 exports.default = exports.userController;

@@ -55,8 +55,8 @@
 .buttonSkip {
     height: auto;
     position: absolute;
-    top: 75%;
-    right: 15%;
+    top: 72%;
+    right: 18%;
 }
 
 .custom-green-button {
@@ -74,10 +74,11 @@ h1 {
     width: 550px;
     height: auto;
     position: absolute;
-    left: 360px;
+    left: 420px;
     top: 50px;
     margin-top: 3%;
     font-size: 50px;
+    text-align: center;
 }
 
 .highlight {
@@ -86,5 +87,5 @@ h1 {
 
 .video {
     margin-top: 6%;
-    margin-left: 10%;
+    text-align: center;
 }

@@ -44,5 +44,13 @@ export class UserService {
   updatePassword(email: string, newPass: string): Observable<ApiResponse> {
     return this.http.put<ApiResponse>(`${this.API_URI}/update-password`, { email, newPass });
   }
+
+  getUserName(Id_User: string): Observable<ApiResponse> {
+    return this.http.get<ApiResponse>(`${this.API_URI}/name/${Id_User}`);
+  }
+
+  getUserType(Id_User: string): Observable<ApiResponse> {
+    return this.http.get<ApiResponse>(`${this.API_URI}/typeUser/${Id_User}`);
+  }  
   
 }

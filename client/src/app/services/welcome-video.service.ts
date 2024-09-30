@@ -14,7 +14,7 @@ export class WelcomeVideoService {
   
   constructor() {
     this.searchQuery.pipe(
-      debounceTime(300), // 300 ms de espera
+      debounceTime(300),
       switchMap(query => this.searchVideos(query))).subscribe();
   }
 
