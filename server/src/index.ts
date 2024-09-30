@@ -3,6 +3,7 @@ import morgan from 'morgan';
 import cors from 'cors';
 import userRoutes from './routes/userRoutes';
 import * as dotenv from 'dotenv';
+import expenseRoutes from './routes/expenseRoutes';
 
 dotenv.config();
 
@@ -25,6 +26,7 @@ class Server {
 
     routes(): void {
         this.app.use('/api/user', userRoutes);
+        this.app.use('/api/expense', expenseRoutes);
     }
 
     start(): void {

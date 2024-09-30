@@ -31,6 +31,7 @@ const morgan_1 = __importDefault(require("morgan"));
 const cors_1 = __importDefault(require("cors"));
 const userRoutes_1 = __importDefault(require("./routes/userRoutes"));
 const dotenv = __importStar(require("dotenv"));
+const expenseRoutes_1 = __importDefault(require("./routes/expenseRoutes"));
 dotenv.config();
 class Server {
     constructor() {
@@ -47,6 +48,7 @@ class Server {
     }
     routes() {
         this.app.use('/api/user', userRoutes_1.default);
+        this.app.use('/api/expense', expenseRoutes_1.default);
     }
     start() {
         this.app.listen(this.app.get('port'), () => {
