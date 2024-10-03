@@ -49,6 +49,7 @@ export class LoginComponent implements OnInit {
       (response: any) => {
         if (response.success) {
           const { Type_User, Id_User } = response;
+          localStorage.setItem('IdUser', Id_User);
           
           if (this.rememberMe) {
             localStorage.setItem('savedUsername', username);

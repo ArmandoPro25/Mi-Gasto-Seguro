@@ -9,6 +9,7 @@ class ExpenseRoutes {
     }
     config() {
         this.router.post('/create', expenseController_1.expenseController.create);
+        this.router.get('/list', expenseController_1.expenseController.list);
     }
 }
 const expenseRoutes = new ExpenseRoutes();

@@ -27,6 +27,8 @@ import { BusinessIncomeComponent } from './components/tables-user-type2/business
 import { BusinessReportComponent } from './components/tables-user-type2/business-report/business-report.component';
 import { WelcomeUserComponent } from './components/home/welcome-user/welcome-user.component';
 import { BusinessDepartmentComponent } from './components/tables-user-type2/business-department/business-department.component';
+import { PersonalExpenseComponent } from './components/tables-user-type1/personal-expense/personal-expense.component';
+import { BusinessExpenseComponent } from './components/tables-user-type2/business-expense/business-expense.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +50,9 @@ import { BusinessDepartmentComponent } from './components/tables-user-type2/busi
     BusinessIncomeComponent,
     BusinessReportComponent,
     WelcomeUserComponent,
-    BusinessDepartmentComponent
+    BusinessDepartmentComponent,
+    PersonalExpenseComponent,
+    BusinessExpenseComponent
   ],
   imports: [
     BrowserModule,

@@ -18,22 +18,27 @@
 </div>
 
 <h1>
-Mis <span class="highlight">gastos</span>.
+Mis <span class="highlight">gastos</span> de {{month}}.
 </h1>
 
 <table class="expenses-table">
-  <thead>
-    <tr>
+  <thead >
+    <tr >
       <th>Descripción</th>
       <th>Monto</th>
+      <th>Fecha</th>
       <th>Acciones</th>
     </tr>
   </thead>
   <tbody>
-    <tr >
-      <td>{{'Descripción'}}</td>
-      <td>$ {{'1500'}}</td>
-      <td>{{'Ver detalle'}}</td>
+    <tr *ngFor="let expense of expenses">
+      <td>{{expense.Description_Expense}}</td>
+      <td>$ {{expense.Amount_Expense}}</td>
+      <td>{{expense.Date_Expense | date}}</td>
+      <td><a [routerLink]="['/personal-expense', expense.Id_PersonalExpenses]">Ver detalle</a></td>
+    </tr>
+  </tbody>
+  
 
 <div class="FinanciebotAI">
   <iframe

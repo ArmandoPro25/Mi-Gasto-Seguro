@@ -60,24 +60,6 @@
 
 /* Contenido */
 
-.buttonNew {
-    height: auto;
-    position: absolute;
-    top: 17%;
-    left: 5%;
-}
-
-.custom-green-button {
-    background-color: #5db672;
-    border-color: #8ae9a0;
-    color: #ffffff;
-}
-  
-.custom-green-button:hover {
-    background-color: #46dd67;
-    border-color: #68e685;
-}
-
 h1 {
     width: 550px;
     height: auto;
@@ -90,42 +72,4 @@ h1 {
 
 .highlight {
     color: green;
-}
-
-.expenses-table {
-    width: 60%;
-    border-collapse: collapse;
-    margin: 20px 0;
-    font-size: 15px;
-    border-radius: 25px;
-    align-items: center;
-    margin-left: 5%;
-    margin-top: 10%;
-}
-
-.expenses-table th,
-.expenses-table td {
-    border: 1px solid black;
-    padding: 10px;
-    text-align: center;
-}
-
-.expenses-table th {
-    background-color: #49454f;
-    color: white;
-}
-
-.expenses-table th:first-child,
-.expenses-table td:first-child {
-    width: 35%;
-}
-
-.expenses-table th:nth-child(2),
-.expenses-table td:nth-child(2) {
-    width: 20%;
-}
-
-.expenses-table th:last-child,
-.expenses-table td:last-child {
-    width: 25%;
 }
