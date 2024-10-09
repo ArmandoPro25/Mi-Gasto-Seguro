@@ -62,16 +62,10 @@
   </div>
 </div>
 
-<div>
-  <h2>Buscar lugar</h2>
-  <form (submit)="searchPlace()">
-    <input type="text" [(ngModel)]="placeName" placeholder="Nombre del lugar" name="place">
-    <button type="submit">Buscar</button>
-  </form>
-
-  <div *ngIf="placeInfo">
-    <h3>{{ placeInfo.text }}</h3>
-    <p>{{ placeInfo.place_name }}</p>
-    <p>Coordenadas: {{ placeInfo.geometry.coordinates[1] }}, {{ placeInfo.geometry.coordinates[0] }}</p>
-  </div>
+<div *ngIf="placeInfo" class="place-info-card">
+  <h4 class="highlight">Información del Lugar:</h4>
+  <p><strong>Nombre del lugar:</strong> {{ placeInfo.place_name || 'No disponible' }}</p>
+  <p><strong>Dirección:</strong> {{ placeInfo.address || 'No disponible' }}</p>
+  <p><strong>Descripción:</strong> {{ placeInfo.text || 'No disponible' }}</p>
+  <p><strong>País:</strong> {{ placeInfo.country || 'No disponible' }}</p>
 </div>

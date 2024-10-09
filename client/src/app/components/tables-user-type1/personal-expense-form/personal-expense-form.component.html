@@ -42,8 +42,8 @@
   
     <div class="form-group">
       <label for="place">Lugar:</label>
-      <input type="text" id="place" name="place" class="form-control" [(ngModel)]="expense.Place_Expense" ngModel>
-    </div>
+      <input type="text" id="place" name="place" class="form-control" [(ngModel)]="placeName" (input)="searchPlace()" ngModel>
+    </div>    
   
     <div class="form-group">
       <label for="paymentMethod">Método de pago:</label>

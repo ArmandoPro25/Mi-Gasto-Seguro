@@ -14,22 +14,21 @@ import { MapboxService } from '../../../services/mapbox.service';
 export class PersonalExpenseComponent implements OnInit {
   expenseDetails: PersonalExpense | null = null;
   expenseId!: number;
-  placeName: string = '';
-  placeInfo: any;
-  
+  placeInfo: any; // Añadido para almacenar la información del lugar
+
   constructor(
     private title: Title, 
     private personalExpensesService: PersonalExpensesService, 
+    private mapboxService: MapboxService, // Inyección del servicio Mapbox
     @Inject(PLATFORM_ID) private platformId: Object, 
     private router: Router,
-    private mapboxService: MapboxService, 
     private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
     this.title.setTitle('Detalle del gasto');
 
-    const expenseId = this.route.snapshot.paramMap.get('id'); // Obtener el ID del gasto desde la URL
+    const expenseId = this.route.snapshot.paramMap.get('id');
     if (expenseId) {
       this.getExpenseDetails(expenseId);
     }
@@ -38,7 +37,8 @@ export class PersonalExpenseComponent implements OnInit {
   private getExpenseDetails(expenseId: string): void {
     this.personalExpensesService.getOne(expenseId).subscribe(
       (data: PersonalExpense) => {
-        this.expenseDetails = data; // Asignar los detalles del gasto a la variable
+        this.expenseDetails = data;
+        this.getPlaceInfo(this.expenseDetails.Place_Expense); // Llama a la función para obtener la información del lugar
       },
       error => {
         console.error('Error al obtener los detalles del gasto', error);
@@ -46,22 +46,18 @@ export class PersonalExpenseComponent implements OnInit {
     );
   }
 
-  // Buscar información de un lugar utilizando Mapbox
-  searchPlace() {
-    if (this.placeName) {
-      this.mapboxService.getPlaceInfo(this.placeName).subscribe(
-        (response) => {
-          if (response.features && response.features.length > 0) {
-            this.placeInfo = response.features[0];
-            console.log(this.placeInfo);
-          } else {
-            console.log('No se encontraron resultados');
-          }
-        },
-        (error) => {
-          console.error('Error fetching place info:', error);
+  // Método para obtener la información del lugar
+  private getPlaceInfo(placeName: string): void {
+    this.mapboxService.getPlaceInfo(placeName).subscribe(
+      (response) => {
+        if (response.features && response.features.length > 0) {
+          this.placeInfo = response.features[0];
+          console.log('Información del lugar:', this.placeInfo);
         }
-      );
-    }
+      },
+      (error) => {
+        console.error('Error al obtener la información del lugar:', error);
+      }
+    );
   }
 }
