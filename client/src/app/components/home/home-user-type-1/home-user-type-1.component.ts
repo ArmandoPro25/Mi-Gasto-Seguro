@@ -62,5 +62,13 @@ export class HomeUserType1Component implements OnInit{
     localStorage.setItem('IdExpense', id);
     this.router.navigate(['/personal-expense', id]);
   }
+
+  createNewExpense() {
+    if (this.idUser) {
+      this.router.navigate(['/personal-expense-form'], { queryParams: { Id_User: this.idUser } });
+    } else {
+      console.error('Usuario no autenticado');
+    }
+  }
   
 }

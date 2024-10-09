@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import pool from '../database';
-import { sendRecoveryEmail, sendVerificationEmail } from '../services/emailService';
-import crypto from 'crypto';
+import multer from 'multer';
+
 
 class PersonalExpenseController {
 

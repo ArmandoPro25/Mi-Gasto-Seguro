@@ -29,6 +29,7 @@ import { WelcomeUserComponent } from './components/home/welcome-user/welcome-use
 import { BusinessDepartmentComponent } from './components/tables-user-type2/business-department/business-department.component';
 import { PersonalExpenseComponent } from './components/tables-user-type1/personal-expense/personal-expense.component';
 import { BusinessExpenseComponent } from './components/tables-user-type2/business-expense/business-expense.component';
+import { PersonalExpenseFormComponent } from './components/tables-user-type1/personal-expense-form/personal-expense-form.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { BusinessExpenseComponent } from './components/tables-user-type2/busines
     WelcomeUserComponent,
     BusinessDepartmentComponent,
     PersonalExpenseComponent,
-    BusinessExpenseComponent
+    BusinessExpenseComponent,
+    PersonalExpenseFormComponent
   ],
   imports: [
     BrowserModule,

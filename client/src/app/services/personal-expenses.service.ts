@@ -22,5 +22,8 @@ export class PersonalExpensesService {
     return this.http.get<PersonalExpense>(`${this.API_URI}/getExpenseById/${id}`);
   }
 
+  createExpense(expense: PersonalExpense): Observable<any> {
+    return this.http.post(`${this.API_URI}/create`, expense);
+  }
   
 }

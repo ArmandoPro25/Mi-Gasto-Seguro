@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro de Gasto</title>
+</head>
+
+<nav class="navbar" style="background-color: #e7f5e6;">
+  <div class="container-fluid">
+    <img src="https://i.imgur.com/MhhJt15.png" [routerLink]="['/home']" class="navbar-brand">
+    <div class="left">
+      <button type="button" class="btn" [routerLink]="['/home']"><h4>Inicio</h4></button>
+      <button type="button" class="btn"><h4>Gastos</h4></button>
+      <button type="button" class="btn" [routerLink]="['/personal-income']"><h4>Ingresos</h4></button>
+      <button type="button" class="btn" [routerLink]="['/personal-report']"><h4>Informe</h4></button>
+    </div>
+    <div class="right">
+      <button type="button" class="btn btn-outline-success" [routerLink]="['/my-account']">Mi cuenta</button>
+    </div>
+  </div>
+</nav>
+
+  <h1>Ingresa tu <span class="highlight">gasto</span></h1>
+
+  <form #expenseForm="ngForm" (ngSubmit)="submitExpense(expenseForm)">
+    <div class="form-group">
+      <label for="description">Descripción del gasto:</label>
+      <input type="text" id="description" name="description" required class="form-control" [(ngModel)]="expense.Description_Expense" ngModel>
+    </div>
+  
+    <div class="form-group">
+      <label for="amount">Monto:</label>
+      <input type="number" id="amount" name="amount" required class="form-control" [(ngModel)]="expense.Amount_Expense" ngModel>
+    </div>
+  
+    <div class="form-group">
+      <label for="date">Fecha del gasto:</label>
+      <input type="date" id="date" name="date" required class="form-control" [(ngModel)]="expense.Date_Expense" ngModel>
+    </div>
+  
+    <div class="form-group">
+      <label for="place">Lugar:</label>
+      <input type="text" id="place" name="place" class="form-control" [(ngModel)]="expense.Place_Expense" ngModel>
+    </div>
+  
+    <div class="form-group">
+      <label for="paymentMethod">Método de pago:</label>
+      <select id="paymentMethod" name="paymentMethod" class="form-control" [(ngModel)]="expense.Payment_Method" ngModel>
+        <option value="Efectivo">Efectivo</option>
+        <option value="Tarjeta de crédito">Tarjeta de crédito</option>
+        <option value="Tarjeta de débito">Tarjeta de débito</option>
+        <option value="Transferencia bancaria">Transferencia bancaria</option>
+      </select>
+    </div>
+  
+    <div class="form-group">
+      <label for="category">Categoría:</label>
+      <select id="category" name="category" class="form-control" [(ngModel)]="expense.Id_Category_Personal" ngModel>
+        <option value="1">Servicio</option>
+        <option value="2">Subscripción</option>
+        <option value="3">Inversión</option>
+        <option value="4">Gasto Personal</option>
+        <option value="5">Alimentación</option>
+        <option value="6">Vivienda</option>
+        <option value="7">Transporte</option>
+        <option value="8">Salud</option>
+      </select>
+    </div>
+  
+    <div class="form-group">
+      <label for="notes">Notas adicionales:</label>
+      <textarea id="notes" name="notes" class="form-control" [(ngModel)]="expense.Notes" ngModel></textarea>
+    </div>
+
+    
+  
+    <button type="submit" class="btn btn-success">Guardar gasto</button>
+  </form>
+  

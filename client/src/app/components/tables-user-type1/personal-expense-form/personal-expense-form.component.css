@@ -1,0 +1,87 @@
+/* Barra de navegación */
+
+.right {
+    margin-left: auto;
+}
+
+.right button {
+    margin-right: 10px;
+}
+
+.left {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.logo {
+    color: black;
+    margin-left: 10px;
+    margin-right: 5px;
+}
+
+.btn {
+    color: black;
+}
+
+.navbar-brand {
+    margin-left: 0;
+    width: 150px;
+    height: auto;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    background-color: rgb(110, 112, 211);
+    height: 80px;
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.left button {
+    margin-right: 5px;
+    color: black;
+  }
+  
+.container-fluid {
+  display: flex;
+  align-items: center;
+}
+
+
+/* Contenido */
+
+h1 {
+    width: 550px;
+    height: auto;
+    position: absolute;
+    left: 200px;
+    top: 20%;
+    font-size: 50px;
+}
+
+.highlight {
+    color: green;
+}
+
+.descripcion {
+    height: auto;
+    position: absolute;
+    left: 10%;
+    top: 35%;
+}
+
+.form-group {
+    margin: 20px 0;
+}
+  
+.form-control {
+    width: 50%;
+    padding: 10px;
+    margin: 5px 0;
+}
+  
+.btn-success {
+    margin-top: 20px;
+}
