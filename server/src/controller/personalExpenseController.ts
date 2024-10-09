@@ -7,9 +7,9 @@ class PersonalExpenseController {
 
     public async create(req: Request, res: Response): Promise<void> {
         try {
-            const { Description_Expense, Amount_Expense, Date_Expense, Place_Expense, Payment_Method, Frequency_Expenses,
+            const { Id_User, Description_Expense, Amount_Expense, Date_Expense, Place_Expense, Payment_Method, Frequency_Expenses,
                 Id_Category_Personal, Notes, Ticket } = req.body;
-            await pool.query('INSERT INTO PersonalExpensess SET ?', [{ Description_Expense, Amount_Expense, 
+            await pool.query('INSERT INTO PersonalExpenses SET ?', [{ Id_User, Description_Expense, Amount_Expense, 
                 Date_Expense, Place_Expense, Payment_Method, Frequency_Expenses, Id_Category_Personal, Notes, Ticket}]);
                 res.json({ message: 'Expense created'});
         } catch (err) {
@@ -37,22 +37,24 @@ class PersonalExpenseController {
             res.status(500).json({ error: 'Error al obtener los gastos' });
         }
     }
-      
+     
 
-    public async getOne(req: Request, res: Response): Promise<void> {
-        const { idUser, idExpense } = req.params;
+    public async getExpenseById(req: Request, res: Response) {
+        const { id } = req.params;
         try {
-            const expense = await pool.query(
-                'SELECT * FROM PersonalExpenses WHERE Id_User = ? AND Id_PersonalExpenses = ?',
-                [idUser, idExpense]
-            );
-    
-            res.json({ expense });
+            const [expense] = await pool.query('SELECT * FROM PersonalExpenses WHERE Id_PersonalExpenses = ?', [id]);   
+            if (!expense) {
+                return res.status(404).json({ message: 'Gasto no encontrado' });
+            } 
+            res.json(expense);
         } catch (err) {
             console.error(err);
-            res.status(500).json({ error: 'Error al obtener los gastos' });
+            res.status(500).json({ error: 'Error al obtener el gasto' });
         }
     }
+        
+
+    
 
 }
 

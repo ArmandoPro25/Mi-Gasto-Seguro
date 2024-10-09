@@ -57,4 +57,10 @@ export class HomeUserType1Component implements OnInit{
       );
     }
   }
+
+  viewExpenseDetail(id: string) {
+    localStorage.setItem('IdExpense', id);
+    this.router.navigate(['/personal-expense', id]);
+  }
+  
 }

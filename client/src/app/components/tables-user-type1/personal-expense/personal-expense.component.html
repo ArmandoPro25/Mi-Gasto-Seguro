@@ -1,18 +1,77 @@
 <nav class="navbar" style="background-color: #e7f5e6;">
-    <div class="container-fluid">
-        <img src="https://i.imgur.com/MhhJt15.png" [routerLink]="['/home']" class="navbar-brand">
-        <div class="left">
-            <button type="button" class="btn" [routerLink]="['/home']"><h4>Inicio</h4></button>
-            <button type="button" class="btn"><h4>Gastos</h4></button>
-            <button type="button" class="btn" [routerLink]="['/business-income']"><h4>Ingresos</h4></button>
-            <button type="button" class="btn" [routerLink]="['/business-report']"><h4>Informe</h4></button>
-        </div>
-        <div class="right">
-          <button type="button" class="btn btn-outline-success" [routerLink]="['/my-account']">Mi cuenta</button>
-        </div>
+  <div class="container-fluid">
+    <img src="https://i.imgur.com/MhhJt15.png" [routerLink]="['/home']" class="navbar-brand">
+    <div class="left">
+      <button type="button" class="btn" [routerLink]="['/home']"><h4>Inicio</h4></button>
+      <button type="button" class="btn"><h4>Gastos</h4></button>
+      <button type="button" class="btn" [routerLink]="['/personal-income']"><h4>Ingresos</h4></button>
+      <button type="button" class="btn" [routerLink]="['/personal-report']"><h4>Informe</h4></button>
     </div>
-  </nav>
+    <div class="right">
+      <button type="button" class="btn btn-outline-success" [routerLink]="['/my-account']">Mi cuenta</button>
+    </div>
+  </div>
+</nav>
 
-  <h1>
-    Mis <span class="highlight">gastos</span> de {{'puta'}}.
-    </h1>
+<h1>Detalles del <span class="highlight">gasto</span></h1>
+
+<div *ngIf="expenseDetails">
+  <div class="descripcion">
+      <h4 class="highlight">Descripción:</h4>
+      <h4 class="r_descripcion">{{ expenseDetails.Description_Expense }}</h4>
+  </div>
+  
+  <div class="monto">
+      <h4 class="highlight">Monto:</h4>
+      <h4 class="r_monto">{{ expenseDetails.Amount_Expense | currency }}</h4>
+  </div>
+  
+  <div class="fecha">
+      <h4 class="highlight">Fecha:</h4>
+      <h4 class="r_fecha">{{ expenseDetails.Date_Expense | date:'mediumDate' }}</h4>
+  </div>
+  
+  <div class="lugar">
+      <h4 class="highlight">Lugar:</h4>
+      <h4 class="r_lugar">{{ expenseDetails.Place_Expense }}</h4>
+  </div>
+  
+  <div class="metodoPago">
+      <h4 class="highlight">Método de pago:</h4>
+      <h4 class="r_metodoPago">{{ expenseDetails.Payment_Method }}</h4>
+  </div>
+  
+  <div class="frecuencia">
+      <h4 class="highlight">Frecuencia:</h4>
+      <h4 class="r_frecuencia">{{ expenseDetails.Frequency_Expenses }}</h4>
+  </div>
+  
+  <div class="categoria">
+      <h4 class="highlight">Categoría:</h4>
+      <h4 class="r_categoria">{{ expenseDetails.Id_Category_Personal }}</h4>
+  </div>
+  
+  <div class="ticket">
+      <h4 class="highlight">Ticket:</h4>
+      <h4 class="r_ticket">{{ expenseDetails.Ticket }}</h4>
+  </div>
+  
+  <div class="notas">
+      <h4 class="highlight">Notas adicionales:</h4>
+      <h4 class="r_notas">{{ expenseDetails.Notes }}</h4>
+  </div>
+</div>
+
+<div>
+  <h2>Buscar lugar</h2>
+  <form (submit)="searchPlace()">
+    <input type="text" [(ngModel)]="placeName" placeholder="Nombre del lugar" name="place">
+    <button type="submit">Buscar</button>
+  </form>
+
+  <div *ngIf="placeInfo">
+    <h3>{{ placeInfo.text }}</h3>
+    <p>{{ placeInfo.place_name }}</p>
+    <p>Coordenadas: {{ placeInfo.geometry.coordinates[1] }}, {{ placeInfo.geometry.coordinates[0] }}</p>
+  </div>
+</div>

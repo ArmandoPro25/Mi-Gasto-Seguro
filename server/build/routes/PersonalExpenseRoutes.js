@@ -10,7 +10,7 @@ class PersonalExpenseRoutes {
     config() {
         this.router.post('/create', personalExpenseController_1.personalExpenseController.create);
         this.router.get('/list/:idUser', personalExpenseController_1.personalExpenseController.list);
-        this.router.get('/getOne/:idUser/:idExpense', personalExpenseController_1.personalExpenseController.getOne);
+        this.router.get('/getExpenseById/:id', personalExpenseController_1.personalExpenseController.getExpenseById);
     }
 }
 const personalExpenseRoutes = new PersonalExpenseRoutes();

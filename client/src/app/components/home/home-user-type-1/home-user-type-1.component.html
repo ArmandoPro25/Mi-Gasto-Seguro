@@ -4,8 +4,8 @@
       <div class="left">
           <button type="button" class="btn" [routerLink]="['/home']"><h4>Inicio</h4></button>
           <button type="button" class="btn"><h4>Gastos</h4></button>
-          <button type="button" class="btn" [routerLink]="['/business-income']"><h4>Ingresos</h4></button>
-          <button type="button" class="btn" [routerLink]="['/business-report']"><h4>Informe</h4></button>
+          <button type="button" class="btn" [routerLink]="['/personal-income']"><h4>Ingresos</h4></button>
+          <button type="button" class="btn" [routerLink]="['/personal-report']"><h4>Informe</h4></button>
       </div>
       <div class="right">
         <button type="button" class="btn btn-outline-success" [routerLink]="['/my-account']">Mi cuenta</button>
@@ -14,7 +14,7 @@
 </nav>
 
 <div class="buttonNew">
-<button class="btn btn-lg custom-green-button" [routerLink]="['/business-expense-form']"> + Nuevo</button>
+<button class="btn btn-lg custom-green-button" [routerLink]="['/personal-expense-form']"> + Nuevo</button>
 </div>
 
 <h1>
@@ -35,7 +35,7 @@ Mis <span class="highlight">gastos</span> de {{month}}.
       <td>{{expense.Description_Expense}}</td>
       <td>$ {{expense.Amount_Expense}}</td>
       <td>{{expense.Date_Expense | date}}</td>
-      <td><a [routerLink]="['/personal-expense', expense.Id_PersonalExpenses]">Ver detalle</a></td>
+      <td><a (click)="viewExpenseDetail(expense.Id_PersonalExpenses)" class="expense-link">Ver detalle</a></td>
     </tr>
   </tbody>
   

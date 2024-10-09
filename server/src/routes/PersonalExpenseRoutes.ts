@@ -11,7 +11,7 @@ class PersonalExpenseRoutes {
     config(): void {
         this.router.post('/create', personalExpenseController.create);
         this.router.get('/list/:idUser', personalExpenseController.list);
-        this.router.get('/getOne/:idUser/:idExpense', personalExpenseController.getOne);
+        this.router.get('/getExpenseById/:id', personalExpenseController.getExpenseById);
     }
 }
 

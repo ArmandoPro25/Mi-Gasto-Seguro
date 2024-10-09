@@ -4,7 +4,7 @@ USE MiGastoSeguro;
 
 CREATE TABLE User (
     Id_User INT PRIMARY KEY AUTO_INCREMENT,                 -- ID del Usuario
-    Name_User VARCHAR(20) NOT NULL UNIQUE,                         -- Nombre del Usuario
+    Name_User VARCHAR(20) NOT NULL UNIQUE,                  -- Nombre del Usuario
     Email_User VARCHAR(50) NOT NULL UNIQUE,                 -- Correo Electronico del Usuario
     Password_User VARCHAR(20) NOT NULL,                     -- Contraseña del Usuario
     Type_User INT,                                          -- Tipo de Usuario (Personal '1', Empresarial '2'

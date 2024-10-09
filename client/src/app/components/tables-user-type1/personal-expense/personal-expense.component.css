@@ -65,11 +65,145 @@ h1 {
     height: auto;
     position: absolute;
     left: 200px;
-    top: 65px;
-    margin-top: 3%;
+    top: 20%;
     font-size: 50px;
 }
 
 .highlight {
     color: green;
+}
+
+.descripcion {
+    height: auto;
+    left: 170px;
+    position: absolute;
+    top: 35%;
+}
+
+.r_descripcion {
+    height: auto;
+    left: 180%;
+    position: absolute;
+    top: -5%;
+    width: 300%;
+}
+
+.monto {
+    height: auto;
+    left: 170px;
+    position: absolute;
+    top: 40%;
+}
+
+.r_monto {
+    height: auto;
+    left: 318%;
+    position: absolute;
+    top: -5%;
+    width: 200%;
+}
+
+.fecha {
+    height: auto;
+    left: 170px;
+    position: absolute;
+    top: 45%;
+}
+
+.r_fecha {
+    height: auto;
+    left: 339%;
+    position: absolute;
+    top: -5%;
+    width: 300%;
+}
+
+.lugar {
+    height: auto;
+    left: 170px;
+    position: absolute;
+    top: 50%;
+}
+
+.r_lugar {
+    height: auto;
+    left: 357%;
+    position: absolute;
+    top: -5%;
+    width: 450%;
+}
+
+.metodoPago {
+    height: auto;
+    left: 170px;
+    position: absolute;
+    top: 55%;
+}
+
+.r_metodoPago {
+    height: auto;
+    left: 133%;
+    position: absolute;
+    top: -5%;
+    width: 200%;
+}
+
+.frecuencia {
+    height: auto;
+    left: 170px;
+    position: absolute;
+    top: 60%;
+}
+
+.r_frecuencia {
+    height: auto;
+    left: 194%;
+    position: absolute;
+    top: -5%;
+    width: 200%;
+}
+
+.categoria {
+    height: auto;
+    left: 170px;
+    position: absolute;
+    top: 65%;
+}
+
+.r_categoria {
+    height: auto;
+    left: 217%;
+    position: absolute;
+    top: -5%;
+    width: 200%;
+}
+
+.ticket {
+    height: auto;
+    left: 170px;
+    position: absolute;
+    top: 70%;
+}
+
+.r_ticket {
+    height: auto;
+    left: 331%;
+    position: absolute;
+    top: -5%;
+    width: 200%;
+}
+
+.notas {
+    height: auto;
+    left: 170px;
+    position: absolute;
+    top: 75%;
+}
+
+.r_notas {
+    height: auto;
+    left: 121%;
+    position: absolute;
+    top: -5%;
+    width: 200%;
 }

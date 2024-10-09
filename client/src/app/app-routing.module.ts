@@ -49,7 +49,7 @@ const routes: Routes = [
   { path: 'business-income-form', component: BusinessIncomeFromComponent },
   { path: 'business-expense-form', component: BusinessExpenseFromComponent },
   { path: 'business-department', component: BusinessDepartmentComponent},
-  { path: 'personal-expense', component: PersonalExpenseComponent },
+  { path: 'personal-expense/:id', component: PersonalExpenseComponent },
   { path: 'business-expense', component: BusinessExpenseComponent }
 ];
 

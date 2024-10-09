@@ -18,10 +18,9 @@ export class PersonalExpensesService {
     );
   }
 
-  getOne(idUser: string, idExpense: string): Observable<PersonalExpense[]> {
-    return this.http.get<{ expense: PersonalExpense[] }>(`${this.API_URI}/getOne/${idUser}/${idExpense}`).pipe(
-      map(response => response.expense)
-    );
+  getOne(id: string): Observable<PersonalExpense> {
+    return this.http.get<PersonalExpense>(`${this.API_URI}/getExpenseById/${id}`);
   }
+
   
 }

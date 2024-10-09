@@ -1,4 +1,6 @@
 export interface PersonalExpense {
+    Id_User?: string;
+    Id_PersonalExpenses?: string;
     Description_Expense?: string;
     Amount_Expense?: string;
     Date_Expense?: string;
