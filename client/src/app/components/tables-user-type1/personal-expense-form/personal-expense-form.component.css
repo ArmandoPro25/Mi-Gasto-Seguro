@@ -65,7 +65,7 @@ h1 {
     color: green;
 }
 
-.descripcion {
+.descripcion1 {
     height: auto;
     position: absolute;
     left: 10%;
@@ -77,11 +77,152 @@ h1 {
 }
   
 .form-control {
-    width: 50%;
+    width: 150%;
+    padding: 10px;
+    margin: 5px 0;
+}
+
+.form-control-2 {
+    width: 80%;
     padding: 10px;
     margin: 5px 0;
 }
   
 .btn-success {
     margin-top: 20px;
+}
+
+form {
+    margin-top: 50%; /* Ajusta el valor según lo necesites */
+}
+
+.form-container {
+    margin-top: 50px; /* Aplica un margen al contenedor del formulario */
+}
+
+/* form 2.0 */
+
+.fecha {
+    color: black;
+    width: 375px;
+    height: auto;
+    position: absolute;
+    left: 8%;
+    top: 55%;
+}
+
+.monto {
+    color: black;
+    width: 375px;
+    height: auto;
+    position: absolute;
+    left: 52%;
+    top: 35%;
+}
+
+.descripcion {
+    color: black;
+    width: 375px;
+    height: auto;
+    position: absolute;
+    left: 8%;
+    top: 35%;
+}
+
+.lugar {
+    color: black;
+    width: 375px;
+    height: auto;
+    position: absolute;
+    left: 52%;
+    top: 55%;
+}
+
+.metodoPago{
+    color: black;
+    width: 375px;
+    height: auto;
+    position: absolute;
+    left: 8%;
+    top: 75%;
+}
+
+.frecuencia {
+    color: black;
+    width: 375px;
+    height: auto;
+    position: absolute;
+    left: 52%;
+    top: 75%;
+}
+
+.categoria {
+    color: black;
+    width: 375px;
+    height: auto;
+    position: absolute;
+    left: 8%;
+    top: 95%;
+}
+
+.notas {
+    color: black;
+    width: 375px;
+    height: auto;
+    position: absolute;
+    left: 52%;
+    top: 95%;
+}
+
+.form-check {
+    height: auto;
+    position: absolute;
+    top: 155px;
+}
+
+.link-opacity-50-hover {
+    height: auto;
+    position: absolute;
+    left: 167px;
+    width: 155px;
+}
+
+.buttonRegistrarme {
+    height: auto;
+    position: absolute;
+    top: 115%;
+    left: 80%;
+    margin-bottom: 5%;
+}
+
+.custom-green-button {
+    background-color: #208839;
+    border-color: #28a745;
+    color: #ffffff;
+}
+  
+.custom-green-button:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+ }
+
+
+.error-message {
+    color: #af1919;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.error-message i {
+    margin-right: 5px;
+}
+
+.password-error {
+    color: #af1919;
+}
+
+.password-no-error {
+    color: black;
 }
