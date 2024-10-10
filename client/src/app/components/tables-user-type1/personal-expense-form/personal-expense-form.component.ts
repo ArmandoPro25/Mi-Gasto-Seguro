@@ -38,6 +38,8 @@ export class PersonalExpenseFormComponent implements OnInit {
     private mapboxService: MapboxService
   ) {}
 
+  errorMessages: { [key: string]: string } = {};
+
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
       this.Id_User = params['Id_User'] || '';
@@ -45,8 +47,32 @@ export class PersonalExpenseFormComponent implements OnInit {
     });
   }
 
+  validateForm(form: NgForm): boolean {
+    this.errorMessages = {};
+
+    const { descripcion, amount, date, place } = form.value;
+
+    if (!descripcion) {
+      this.errorMessages['Descripcion'] = 'El campo no debe estar vacío';
+    }
+
+    if (!amount || amount <= 0) {
+      this.errorMessages['Monto'] = 'El monto debe ser un número positivo';
+    }
+
+    if (!date) {
+      this.errorMessages['Fecha'] = 'La fecha no debe estar vacía';
+    }
+
+    if (!place) {
+      this.errorMessages['Lugar'] = 'El campo lugar no debe estar vacío';
+    }
+
+    return Object.keys(this.errorMessages).length === 0;
+  }
+
   submitExpense(form: NgForm): void {
-    if (form.valid) {
+    if (this.validateForm(form)) {
       this.personalExpensesService.createExpense(this.expense).subscribe(
         (res) => {
           console.log('Gasto creado:', res);
@@ -57,9 +83,8 @@ export class PersonalExpenseFormComponent implements OnInit {
         }
       );
     }
-  }
+  }  
 
-  // Buscar información de un lugar utilizando Mapbox
   searchPlace() {
     if (this.placeName) {
       this.mapboxService.getPlaceInfo(this.placeName).subscribe(
@@ -68,15 +93,13 @@ export class PersonalExpenseFormComponent implements OnInit {
             this.placeInfo = response.features[0];
             console.log(this.placeInfo);
             
-            // Obtener el nombre del lugar y la ciudad
             const placeParts = this.placeInfo.place_name.split(',');
-            const placeName = placeParts[0].trim(); // "Cinepolis Paseo Dolores"
-            const cityName = placeParts.length > 1 ? placeParts[1].trim() : ''; // "Dolores Hidalgo"
+            const placeName = placeParts[0].trim();
+            const cityName = placeParts.length > 1 ? placeParts[1].trim() : '';
             
-            // Actualiza Place_Expense con el nombre del lugar y la ciudad
-            this.expense.Place_Expense = `${placeName}${cityName ? ', ' + cityName : ''}`; // Solo "Cinepolis Paseo Dolores, Dolores Hidalgo"
+            this.expense.Place_Expense = `${placeName}${cityName ? ', ' + cityName : ''}`;
   
-            console.log('Dirección actualizada:', this.expense.Place_Expense); // Para verificar la actualización
+            console.log('Dirección actualizada:', this.expense.Place_Expense);
           } else {
             console.log('No se encontraron resultados');
           }

@@ -34,10 +34,8 @@ class PersonalExpenseController {
     list(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { idUser } = req.params;
+            const { month, year } = req.query;
             try {
-                const currentDate = new Date();
-                const month = currentDate.getMonth() + 1;
-                const year = currentDate.getFullYear();
                 const expenses = yield database_1.default.query('SELECT * FROM PersonalExpenses WHERE Id_User = ? AND MONTH(Date_Expense) = ? AND YEAR(Date_Expense) = ?', [idUser, month, year]);
                 res.json({ expenses });
             }

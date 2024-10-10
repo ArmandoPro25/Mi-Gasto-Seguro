@@ -108,7 +108,7 @@ form {
     height: auto;
     position: absolute;
     left: 8%;
-    top: 55%;
+    top: 52%;
 }
 
 .monto {
@@ -135,7 +135,7 @@ form {
     height: auto;
     position: absolute;
     left: 52%;
-    top: 55%;
+    top: 52%;
 }
 
 .metodoPago{
@@ -144,7 +144,7 @@ form {
     height: auto;
     position: absolute;
     left: 8%;
-    top: 75%;
+    top: 70%;
 }
 
 .frecuencia {
@@ -153,7 +153,7 @@ form {
     height: auto;
     position: absolute;
     left: 52%;
-    top: 75%;
+    top: 70%;
 }
 
 .categoria {
@@ -162,7 +162,7 @@ form {
     height: auto;
     position: absolute;
     left: 8%;
-    top: 95%;
+    top: 87%;
 }
 
 .notas {
@@ -171,7 +171,7 @@ form {
     height: auto;
     position: absolute;
     left: 52%;
-    top: 95%;
+    top: 87%;
 }
 
 .form-check {
@@ -190,7 +190,7 @@ form {
 .buttonRegistrarme {
     height: auto;
     position: absolute;
-    top: 115%;
+    top: 108%;
     left: 80%;
     margin-bottom: 5%;
 }
@@ -207,22 +207,18 @@ form {
  }
 
 
-.error-message {
+ .error-message {
     color: #af1919;
     font-size: 14px;
-    display: flex;
+    display: none;
     align-items: center;
     margin-top: 5px;
 }
 
+.error-message.show {
+    display: flex;
+}
+
 .error-message i {
     margin-right: 5px;
-}
-
-.password-error {
-    color: #af1919;
-}
-
-.password-no-error {
-    color: black;
 }

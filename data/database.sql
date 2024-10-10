@@ -27,11 +27,11 @@ CREATE TABLE PersonalExpenses (
     Id_PersonalExpenses INT PRIMARY KEY AUTO_INCREMENT,     -- ID del Gasto
     Description_Expense VARCHAR(30) NOT NULL,               -- Descripción del Gasto
     Amount_Expense DECIMAL(10, 2) NOT NULL,                 -- Monto del Gasto
-    Date_Expense DATETIME NOT NULL,                         -- Fecha del Gasto                      
+    Date_Expense DATE NOT NULL,                             -- Fecha del Gasto                      
     Place_Expense VARCHAR(100) NULL,                        -- Lugar del Gasto
     Payment_Method VARCHAR(30) NOT NULL,                    -- Metodo de Pago
     Frequency_Expenses VARCHAR(30) NULL,                    -- Frecuencía del Gasto
-    Id_Category_Personal INT NOT NULL,                          -- ID de la Categoría               
+    Id_Category_Personal INT NOT NULL,                      -- ID de la Categoría               
     Notes VARCHAR(100) NULL,                                -- Notas Adicionales
     Ticket VARCHAR(100) NULL,                               -- Recibo del Gasto
     FOREIGN KEY (Id_User) REFERENCES User(Id_User),

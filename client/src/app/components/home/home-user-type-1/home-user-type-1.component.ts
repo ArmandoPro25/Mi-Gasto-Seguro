@@ -7,34 +7,43 @@ import { PersonalExpensesService } from '../../../services/personal-expenses.ser
 @Component({
   selector: 'app-home-user-type-1',
   templateUrl: './home-user-type-1.component.html',
-  styleUrl: './home-user-type-1.component.css'
+  styleUrls: ['./home-user-type-1.component.css']
 })
-export class HomeUserType1Component implements OnInit{
+export class HomeUserType1Component implements OnInit {
 
   expenses: any = [];
   idUser: string | null = null;
   month: string = '';
+  currentMonth: number = 0;
+  currentYear: number = 0;
 
-  constructor (private titleService: Title, private personalExpenseServices: PersonalExpensesService, private router: Router,
-  @Inject(PLATFORM_ID) private platformId: Object, 
-  ) { this.setCurrentMonth(); }
-  
+  constructor(
+    private titleService: Title,
+    private personalExpenseServices: PersonalExpensesService,
+    private router: Router,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) { 
+    this.setCurrentMonth();
+  }
+
   setCurrentMonth() {
     const date = new Date();
     const months = [
       'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
       'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
     ];
-    this.month = months[date.getMonth()]; // Obtiene el nombre del mes actual
+    this.currentMonth = date.getMonth() + 1; // Enero es 0
+    this.currentYear = date.getFullYear();
+    this.month = months[date.getMonth()];
   }
 
   ngOnInit(): void {
     this.titleService.setTitle('Mi Gasto Seguro');
-    
+
     if (isPlatformBrowser(this.platformId)) {
       this.idUser = localStorage.getItem('IdUser');
       if (this.idUser) {
-        this.loadExpenses();
+        this.loadExpenses(this.currentMonth, this.currentYear);
       } else {
         console.error('Usuario no autenticado');
         this.router.navigate(['/login']);
@@ -44,18 +53,43 @@ export class HomeUserType1Component implements OnInit{
       this.router.navigate(['/login']);
     }
   }
-  
-   
 
-  loadExpenses() {
+  loadExpenses(month: number, year: number) {
     if (this.idUser) {
-      this.personalExpenseServices.getExpenses(this.idUser).subscribe(
+      this.personalExpenseServices.getExpensesByMonth(this.idUser, month, year).subscribe(
         (resp: any) => {
           this.expenses = resp;
         },
         err => console.log(err)
       );
     }
+  }
+
+  loadPreviousMonthExpenses() {
+    if (this.currentMonth === 1) {
+      this.currentMonth = 12;
+      this.currentYear -= 1;
+    } else {
+      this.currentMonth -= 1;
+    }
+    this.updateMonthLabel();
+    this.loadExpenses(this.currentMonth, this.currentYear);
+  }
+
+  loadCurrentMonthExpenses() {
+    const date = new Date();
+    this.currentMonth = date.getMonth() + 1;
+    this.currentYear = date.getFullYear();
+    this.updateMonthLabel();
+    this.loadExpenses(this.currentMonth, this.currentYear);
+  }
+
+  updateMonthLabel() {
+    const months = [
+      'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
+      'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
+    ];
+    this.month = months[this.currentMonth - 1];
   }
 
   viewExpenseDetail(id: string) {
@@ -70,5 +104,4 @@ export class HomeUserType1Component implements OnInit{
       console.error('Usuario no autenticado');
     }
   }
-  
 }

@@ -17,9 +17,11 @@
   <button class="btn btn-lg custom-green-button" (click)="createNewExpense()"> + Nuevo</button>
 </div>
 
-<h1>
+<h1 class="back" (click)="loadPreviousMonthExpenses()">&lt;</h1>
+<h1 class="text">
 Mis <span class="highlight">gastos</span> de {{month}}.
 </h1>
+<h1 class="next" (click)="loadCurrentMonthExpenses()">&gt;</h1>
 
 <table class="expenses-table">
   <thead >

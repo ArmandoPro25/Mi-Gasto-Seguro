@@ -26,4 +26,10 @@ export class PersonalExpensesService {
     return this.http.post(`${this.API_URI}/create`, expense);
   }
   
+  getExpensesByMonth(idUser: string, month: number, year: number): Observable<PersonalExpense[]> {
+    return this.http.get<{ expenses: PersonalExpense[] }>(`${this.API_URI}/list/${idUser}?month=${month}&year=${year}`).pipe(
+      map(response => response.expenses)
+    );
+  }
+  
 }

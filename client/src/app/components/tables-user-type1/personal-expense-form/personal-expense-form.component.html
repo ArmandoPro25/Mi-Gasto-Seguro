@@ -26,92 +26,81 @@
 
   <form #expenseForm="ngForm" (ngSubmit)="submitExpense(expenseForm)">
 
-  <div class="descripcion">
-    <label for="descripcion" class="form-label">Descripción del gasto:</label>
-    <input type="text" required class="form-control" id="descripcion" name="descripcion" [(ngModel)]="expense.Description_Expense" ngModel>
-    <div class="error-message">
-        <i class="fas fa-exclamation-circle"></i>
+    <div class="descripcion">
+      <label for="descripcion" class="form-label">Descripción del gasto:</label>
+      <input type="text" required class="form-control" id="descripcion" name="descripcion" [(ngModel)]="expense.Description_Expense" ngModel>
+      <div class="error-message" [ngClass]="{'show': errorMessages['Descripcion']}">
+        <i class="fas fa-exclamation-circle"></i> {{ errorMessages['Descripcion'] }}
+      </div>
     </div>
-</div>
-
-<div class="monto">
-  <label for="amount" class="form-label">Monto:</label>
-  <input class="form-control-2" type="number" id="amount" name="amount" required class="form-control" [(ngModel)]="expense.Amount_Expense" ngModel>
-  <div class="error-message">
-    <i class="fas fa-exclamation-circle"></i>
-</div>
-</div>
-
-<div class="fecha">
-  <label for="date" class="form-label">Fecha del gasto:</label>
-  <input type="date" id="date" name="date" required class="form-control" [(ngModel)]="expense.Date_Expense" ngModel>
-  <div class="error-message">
-    <i class="fas fa-exclamation-circle"></i>
-</div>
-</div>
-
-<div class="lugar">
-  <label for="place" class="form-label">Lugar:</label>
-  <input type="text" id="place" name="place" class="form-control" [(ngModel)]="placeName" (input)="searchPlace()" ngModel>
-  <div class="error-message">
-    <i class="fas fa-exclamation-circle"></i>
-</div>
-</div> 
-
-<div class="metodoPago">
-  <label for="paymentMethod">Método de pago:</label>
-  <select id="paymentMethod" name="paymentMethod" class="form-control" [(ngModel)]="expense.Payment_Method" ngModel>
-    <option value="Efectivo">Efectivo</option>
-    <option value="Tarjeta de crédito">Tarjeta de crédito</option>
-    <option value="Tarjeta de débito">Tarjeta de débito</option>
-    <option value="Transferencia bancaria">Transferencia bancaria</option>
-  </select>
-  <div class="error-message">
-    <i class="fas fa-exclamation-circle"></i>
-</div>
-</div>
-
-<div class="frecuencia">
-  <label for="Frequency_Expenses">Frecuencia:</label>
-  <select id="Frequency_Expenses" name="Frequency_Expenses" class="form-control" [(ngModel)]="expense.Frequency_Expenses" ngModel>
-    <option value="Diario">Diario</option>
-    <option value="Semanal">Semanal</option>
-    <option value="Mensual">Mensual</option>
-    <option value="Anual">Anual</option>
-    <option value="Unico">Unico</option>
-  </select>
-  <div class="error-message">
-    <i class="fas fa-exclamation-circle"></i>
-</div>
-</div>
-
-<div class="categoria">
-  <label for="category">Categoría:</label>
-  <select id="category" name="category" class="form-control" [(ngModel)]="expense.Id_Category_Personal" ngModel>
-    <option value="1">Servicio</option>
-    <option value="2">Subscripción</option>
-    <option value="3">Inversión</option>
-    <option value="4">Gasto Personal</option>
-    <option value="5">Alimentación</option>
-    <option value="6">Vivienda</option>
-    <option value="7">Transporte</option>
-    <option value="8">Salud</option>
-  </select>
-  <div class="error-message">
-    <i class="fas fa-exclamation-circle"></i>
-</div>
-</div>
-
-<div class="notas">
-  <label for="notes">Notas adicionales:</label>
-  <textarea id="notes" name="notes" class="form-control" [(ngModel)]="expense.Notes" ngModel></textarea>
-  <div class="error-message">
-    <i class="fas fa-exclamation-circle"></i>
-</div>
-</div>
-
-<div class="buttonRegistrarme">
-  <button type="submit" class="btn btn-lg custom-green-button">Guardar gasto</button>
-</div>
-
-</form>
+  
+    <div class="monto">
+      <label for="amount" class="form-label">Monto:</label>
+      <input class="form-control-2" type="number" id="amount" name="amount" required class="form-control" [(ngModel)]="expense.Amount_Expense" ngModel>
+      <div class="error-message" [ngClass]="{'show': errorMessages['Monto']}">
+        <i class="fas fa-exclamation-circle"></i> {{ errorMessages['Monto'] }}
+      </div>
+    </div>
+  
+    <div class="fecha">
+      <label for="date" class="form-label">Fecha del gasto:</label>
+      <input type="date" id="date" name="date" required class="form-control" [(ngModel)]="expense.Date_Expense" ngModel>
+      <div class="error-message" [ngClass]="{'show': errorMessages['Fecha']}">
+        <i class="fas fa-exclamation-circle"></i> {{ errorMessages['Fecha'] }}
+      </div>
+    </div>
+  
+    <div class="lugar">
+      <label for="place" class="form-label">Lugar:</label>
+      <input type="text" id="place" name="place" class="form-control" [(ngModel)]="placeName" (input)="searchPlace()" ngModel>
+      <div class="error-message" [ngClass]="{'show': errorMessages['Lugar']}">
+        <i class="fas fa-exclamation-circle"></i> {{ errorMessages['Lugar'] }}
+      </div>
+    </div> 
+  
+    <div class="metodoPago">
+      <label for="paymentMethod">Método de pago:</label>
+      <select id="paymentMethod" name="paymentMethod" class="form-control" [(ngModel)]="expense.Payment_Method" ngModel>
+        <option value="Efectivo">Efectivo</option>
+        <option value="Tarjeta de crédito">Tarjeta de crédito</option>
+        <option value="Tarjeta de débito">Tarjeta de débito</option>
+        <option value="Transferencia bancaria">Transferencia bancaria</option>
+      </select>
+    </div>
+    
+    <div class="frecuencia">
+      <label for="Frequency_Expenses">Frecuencia:</label>
+      <select id="Frequency_Expenses" name="Frequency_Expenses" class="form-control" [(ngModel)]="expense.Frequency_Expenses" ngModel>
+        <option value="Diario">Diario</option>
+        <option value="Semanal">Semanal</option>
+        <option value="Mensual">Mensual</option>
+        <option value="Anual">Anual</option>
+        <option value="Unico">Unico</option>
+      </select>
+    </div>
+    
+    <div class="categoria">
+      <label for="category">Categoría:</label>
+      <select id="category" name="category" class="form-control" [(ngModel)]="expense.Id_Category_Personal" ngModel>
+        <option value="1">Servicio</option>
+        <option value="2">Suscripción</option>
+        <option value="3">Inversión</option>
+        <option value="4">Gasto Personal</option>
+        <option value="5">Alimentación</option>
+        <option value="6">Vivienda</option>
+        <option value="7">Transporte</option>
+        <option value="8">Salud</option>
+      </select>
+    </div>
+    
+    <div class="notas">
+      <label for="notes">Notas adicionales:</label>
+      <textarea id="notes" name="notes" class="form-control" [(ngModel)]="expense.Notes" ngModel></textarea>
+    </div>
+  
+    <div class="buttonRegistrarme">
+      <button type="submit" class="btn btn-lg custom-green-button">Guardar gasto</button>
+    </div>
+  
+  </form>
+  

@@ -22,21 +22,21 @@ class PersonalExpenseController {
 
     public async list(req: Request, res: Response): Promise<void> {
         const { idUser } = req.params;
+        const { month, year } = req.query;
+        
         try {
-            const currentDate = new Date();
-            const month = currentDate.getMonth() + 1;
-            const year = currentDate.getFullYear();
-            const expenses = await pool.query(
-                'SELECT * FROM PersonalExpenses WHERE Id_User = ? AND MONTH(Date_Expense) = ? AND YEAR(Date_Expense) = ?',
-                [idUser, month, year]
-            );
-    
-            res.json({ expenses });
+          const expenses = await pool.query(
+            'SELECT * FROM PersonalExpenses WHERE Id_User = ? AND MONTH(Date_Expense) = ? AND YEAR(Date_Expense) = ?',
+            [idUser, month, year]
+          );
+          
+          res.json({ expenses });
         } catch (err) {
-            console.error(err);
-            res.status(500).json({ error: 'Error al obtener los gastos' });
+          console.error(err);
+          res.status(500).json({ error: 'Error al obtener los gastos' });
         }
-    }
+      }
+      
      
 
     public async getExpenseById(req: Request, res: Response) {

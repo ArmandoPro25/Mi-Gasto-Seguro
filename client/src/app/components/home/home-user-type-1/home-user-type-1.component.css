@@ -78,14 +78,34 @@
     border-color: #68e685;
 }
 
-h1 {
-    width: 550px;
+.text {
+    width: 600px;
     height: auto;
     position: absolute;
-    left: 200px;
+    left: 19%;
     top: 65px;
     margin-top: 3%;
     font-size: 50px;
+}
+
+.back {
+    height: auto;
+    position: absolute;
+    left: 14%;
+    top: 65px;
+    margin-top: 3%;
+    font-size: 50px;
+    cursor: pointer;
+}
+
+.next {
+    height: auto;
+    position: absolute;
+    left: 65%;
+    top: 65px;
+    margin-top: 3%;
+    font-size: 50px;
+    cursor: pointer;
 }
 
 .highlight {
