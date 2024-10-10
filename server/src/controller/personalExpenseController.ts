@@ -42,16 +42,24 @@ class PersonalExpenseController {
     public async getExpenseById(req: Request, res: Response) {
         const { id } = req.params;
         try {
-            const [expense] = await pool.query('SELECT * FROM PersonalExpenses WHERE Id_PersonalExpenses = ?', [id]);   
+            const [expense] = await pool.query(`
+                SELECT pe.*, cp.CategoryPersonal 
+                FROM PersonalExpenses pe
+                JOIN CategoryPersonal cp ON pe.Id_Category_Personal = cp.Id_Category_Personal
+                WHERE pe.Id_PersonalExpenses = ?
+            `, [id]);   
+            
             if (!expense) {
                 return res.status(404).json({ message: 'Gasto no encontrado' });
             } 
+            
             res.json(expense);
         } catch (err) {
             console.error(err);
             res.status(500).json({ error: 'Error al obtener el gasto' });
         }
     }
+    
     
 
 }

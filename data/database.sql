@@ -31,7 +31,7 @@ CREATE TABLE PersonalExpenses (
     Place_Expense VARCHAR(100) NULL,                        -- Lugar del Gasto
     Payment_Method VARCHAR(30) NOT NULL,                    -- Metodo de Pago
     Frequency_Expenses VARCHAR(30) NULL,                    -- Frecuencía del Gasto
-    Id_Category_Personal INT NULL,                          -- ID de la Categoría               
+    Id_Category_Personal INT NOT NULL,                          -- ID de la Categoría               
     Notes VARCHAR(100) NULL,                                -- Notas Adicionales
     Ticket VARCHAR(100) NULL,                               -- Recibo del Gasto
     FOREIGN KEY (Id_User) REFERENCES User(Id_User),
@@ -58,7 +58,7 @@ CREATE TABLE BusinessExpenses (
     Date_Expense DATETIME NOT NULL,                         -- Fecha del Gasto
     Place_Expense VARCHAR(100) NOT NULL,                    -- Lugar del Gasto
     Id_Category_Business INT NOT NULL,                      -- ID de la Categoría
-    Project VARCHAR(20) NULL,                               -- Proyecto del Gasto
+    Project VARCHAR(30) NULL,                               -- Proyecto del Gasto
     Frequency_Expenses VARCHAR(30) NULL,                    -- Frecuencia del Gasto
     Taxes DECIMAL(10, 2) NULL,                              -- Impuestos
     Ticket VARCHAR(100) NULL,                               -- Recicbo del Gasto

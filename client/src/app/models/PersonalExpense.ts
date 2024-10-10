@@ -8,6 +8,7 @@ export interface PersonalExpense {
     Payment_Method?: string;
     Frequency_Expenses?: string;
     Id_Category_Personal?: number;
+    CategoryPersonal?: string; 
     Notes?: string;
     Ticket?: string;
 }

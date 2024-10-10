@@ -14,6 +14,7 @@ export class MapboxService {
 
   constructor(private http: HttpClient) {}
 
+  // Método para obtener la información de un lugar
   getPlaceInfo(placeName: string): Observable<any> {
     const url = `${this.apiUrl}${encodeURIComponent(placeName)}.json`;
     let params = new HttpParams()

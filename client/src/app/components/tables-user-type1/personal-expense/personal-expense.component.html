@@ -45,16 +45,12 @@
       <h4 class="highlight">Frecuencia:</h4>
       <h4 class="r_frecuencia">{{ expenseDetails.Frequency_Expenses }}</h4>
   </div>
-  
+
   <div class="categoria">
-      <h4 class="highlight">Categoría:</h4>
-      <h4 class="r_categoria">{{ expenseDetails.Id_Category_Personal }}</h4>
+    <h4 class="highlight">Categoría:</h4>
+    <h4 class="r_categoria">{{ expenseDetails.CategoryPersonal }}</h4>
   </div>
-  
-  <div class="ticket">
-      <h4 class="highlight">Ticket:</h4>
-      <h4 class="r_ticket">{{ expenseDetails.Ticket }}</h4>
-  </div>
+
   
   <div class="notas">
       <h4 class="highlight">Notas adicionales:</h4>
@@ -62,12 +58,11 @@
   </div>
 </div>
 
+
 <div *ngIf="placeInfo" class="place-info-card">
   <h4 class="highlight">Información del Lugar:</h4>
-  <p><strong>Nombre del lugar:</strong> {{ placeInfo.place_name || 'No disponible' }}</p>
-  <p><strong>Dirección:</strong> {{ placeInfo.address || 'No disponible' }}</p>
-  <p><strong>Descripción:</strong> {{ placeInfo.text || 'No disponible' }}</p>
-  <p><strong>País:</strong> {{ placeInfo.country || 'No disponible' }}</p>
+  <p><strong>Nombre del lugar:</strong> {{ placeInfo.text || 'No disponible' }}</p>
+  <p><strong>Dirección:</strong> {{ placeInfo.place_name || 'No disponible' }}</p>
   <img *ngIf="placeImageUrl" [src]="placeImageUrl" alt="Imagen del lugar" class="place-image">
 </div>
 

@@ -51,7 +51,12 @@ class PersonalExpenseController {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
             try {
-                const [expense] = yield database_1.default.query('SELECT * FROM PersonalExpenses WHERE Id_PersonalExpenses = ?', [id]);
+                const [expense] = yield database_1.default.query(`
+                SELECT pe.*, cp.CategoryPersonal 
+                FROM PersonalExpenses pe
+                JOIN CategoryPersonal cp ON pe.Id_Category_Personal = cp.Id_Category_Personal
+                WHERE pe.Id_PersonalExpenses = ?
+            `, [id]);
                 if (!expense) {
                     return res.status(404).json({ message: 'Gasto no encontrado' });
                 }

@@ -178,26 +178,11 @@ h1 {
     width: 200%;
 }
 
-.ticket {
-    height: auto;
-    left: 170px;
-    position: absolute;
-    top: 70%;
-}
-
-.r_ticket {
-    height: auto;
-    left: 331%;
-    position: absolute;
-    top: -5%;
-    width: 200%;
-}
-
 .notas {
     height: auto;
     left: 170px;
     position: absolute;
-    top: 75%;
+    top: 70%;
 }
 
 .r_notas {
@@ -205,13 +190,13 @@ h1 {
     left: 121%;
     position: absolute;
     top: -5%;
-    width: 200%;
+    width: 300%;
 }
 
 .place-info-card {
     border: 1px solid #e7f5e6;
     padding: 15px;
-    margin-top: 20px;
+    margin-top: 6%;
     background-color: #f9f9f9;
     border-radius: 5px;
     width: 250px;

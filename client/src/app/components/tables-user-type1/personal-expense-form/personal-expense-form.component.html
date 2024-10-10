@@ -54,6 +54,17 @@
         <option value="Transferencia bancaria">Transferencia bancaria</option>
       </select>
     </div>
+
+    <div class="form-group">
+      <label for="Frequency_Expenses">Frecuencia:</label>
+      <select id="Frequency_Expenses" name="Frequency_Expenses" class="form-control" [(ngModel)]="expense.Frequency_Expenses" ngModel>
+        <option value="Diario">Diario</option>
+        <option value="Semanal">Semanal</option>
+        <option value="Mensual">Mensual</option>
+        <option value="Anual">Anual</option>
+        <option value="Unico">Unico</option>
+      </select>
+    </div>
   
     <div class="form-group">
       <label for="category">Categoría:</label>
