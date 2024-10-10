@@ -68,4 +68,6 @@
   <p><strong>Dirección:</strong> {{ placeInfo.address || 'No disponible' }}</p>
   <p><strong>Descripción:</strong> {{ placeInfo.text || 'No disponible' }}</p>
   <p><strong>País:</strong> {{ placeInfo.country || 'No disponible' }}</p>
+  <img *ngIf="placeImageUrl" [src]="placeImageUrl" alt="Imagen del lugar" class="place-image">
 </div>
+
