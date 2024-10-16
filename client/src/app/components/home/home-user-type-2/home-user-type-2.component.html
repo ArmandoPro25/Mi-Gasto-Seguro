@@ -15,45 +15,54 @@
 </nav>
 
 <div class="buttonNew">
-  <button class="btn btn-lg custom-green-button" [routerLink]="['/business-expense-form']"> + Nuevo</button>
+  <button class="btn btn-lg custom-green-button" (click)="createNewExpense()"> + Nuevo</button>
 </div>
 
-<h1>
-  Mis <span class="highlight">gastos</span>.
+<h1 class="back" (click)="loadPreviousMonthExpenses()">&lt;</h1>
+<h1 class="text">
+Gastos realizados en <span class="highlight">{{month}}</span>.
 </h1>
+<h1 class="next" (click)="loadCurrentMonthExpenses()">&gt;</h1>
 
-  <table class="expenses-table">
-    <thead>
-      <tr>
-        <th>Descripción</th>
-        <th>Monto</th>
-        <th>Acciones</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr >
-        <td>{{'Descripción'}}</td>
-        <td>$ {{'1500'}}</td>
-        <td>{{'Ver detalle'}}</td>
+<table class="expenses-table">
+  <thead >
+    <tr >
+      <th>Descripción</th>
+      <th>Monto</th>
+      <th>Fecha</th>
+      <th>Departemento</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let expense of expenses">
+      <td>{{expense.Description_Expense}}</td>
+      <td>$ {{expense.Amount_Expense}}</td>
+      <td>{{expense.Date_Expense | date}}</td>
+      <td>{{expense.Place_Expense}}</td>
+      <td><a (click)="viewExpenseDetail(expense.Id_BusinessExpenses)" class="expense-link">Ver detalle</a></td>
+    </tr>
+  </tbody>
+  
 
 <div class="FinanciebotAI">
-    <iframe
-      src="https://www.chatbase.co/chatbot-iframe/Cwk1qX0MPWZoZvmRSjMxu"
-      width="100%"
-      style="height: 400px; min-height: 400px;"
-      frameborder="0"
-    ></iframe>
-  
-    <script>
-      window.embeddedChatbotConfig = {
-        chatbotId: "Cwk1qX0MPWZoZvmRSjMxu",
-        domain: "www.chatbase.co",
-      };
-    </script>
-    <script
-      src="https://www.chatbase.co/embed.min.js"
-      chatbotId="Cwk1qX0MPWZoZvmRSjMxu"
-      domain="www.chatbase.co"
-      defer
-    ></script>
-  </div>
+  <iframe
+    src="https://www.chatbase.co/chatbot-iframe/Cwk1qX0MPWZoZvmRSjMxu"
+    width="100%"
+    style="height: 400px; min-height: 400px;"
+    frameborder="0"
+  ></iframe>
+
+  <script>
+    window.embeddedChatbotConfig = {
+      chatbotId: "Cwk1qX0MPWZoZvmRSjMxu",
+      domain: "www.chatbase.co",
+    };
+  </script>
+  <script
+    src="https://www.chatbase.co/embed.min.js"
+    chatbotId="Cwk1qX0MPWZoZvmRSjMxu"
+    domain="www.chatbase.co"
+    defer
+  ></script>
+</div>

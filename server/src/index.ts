@@ -4,6 +4,7 @@ import cors from 'cors';
 import userRoutes from './routes/userRoutes';
 import * as dotenv from 'dotenv';
 import PersonalExpenseRoutes from './routes/PersonalExpenseRoutes';
+import BusinessExpenseRoutes from './routes/BusinessExpenseRoutes';
 
 dotenv.config();
 
@@ -27,6 +28,7 @@ class Server {
     routes(): void {
         this.app.use('/api/user', userRoutes);
         this.app.use('/api/personal-expense', PersonalExpenseRoutes);
+        this.app.use('/api/business-expense', BusinessExpenseRoutes);
     }
 
     start(): void {
