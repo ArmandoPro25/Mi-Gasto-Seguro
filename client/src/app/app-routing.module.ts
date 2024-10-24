@@ -24,6 +24,9 @@ import { BusinessExpenseComponent } from './components/tables-user-type2/busines
 import { PersonalExpenseFormComponent } from './components/tables-user-type1/personal-expense-form/personal-expense-form.component';
 import { BusinessExpenseFormComponent } from './components/tables-user-type2/business-expense-form/business-expense-form.component';
 import { BusinessIncomeFormComponent } from './components/tables-user-type2/business-income-form/business-income-form.component';
+import { PayForAccess1Component } from './components/init/pay-for-access-1/pay-for-access-1.component';
+import { PayForAccess2Component } from './components/init/pay-for-access-2/pay-for-access-2.component';
+import { PaypalComponent } from './components/init/paypal/paypal.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -50,7 +53,10 @@ const routes: Routes = [
   { path: 'business-department', component: BusinessDepartmentComponent},
   { path: 'personal-expense/:id', component: PersonalExpenseComponent },
   { path: 'business-expense', component: BusinessExpenseComponent },
-  { path: 'personal-expense-form', component: PersonalExpenseFormComponent }
+  { path: 'personal-expense-form', component: PersonalExpenseFormComponent },
+  { path: 'pay-for-access-1', component: PayForAccess1Component },
+  { path: 'pay-for-access-2', component: PayForAccess2Component },
+  { path: 'paypal', component: PaypalComponent }
 ];
 
 @NgModule({

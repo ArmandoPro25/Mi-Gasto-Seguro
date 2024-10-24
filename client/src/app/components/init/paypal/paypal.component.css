@@ -1,0 +1,210 @@
+/* Barra de navegación */
+
+.right {
+    margin-left: auto;
+}
+
+.right button {
+    margin-right: 10px;
+}
+
+.left {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.logo {
+    color: black;
+    margin-left: 10px;
+    margin-right: 5px;
+}
+
+.btn {
+    color: black;
+}
+
+.navbar-brand {
+    margin-left: 0;
+    width: 150px;
+    height: auto;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    background-color: rgb(110, 112, 211);
+    height: 80px;
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.left button {
+    margin-right: 5px;
+    color: black;
+  }
+  
+.container-fluid {
+  display: flex;
+  align-items: center;
+}
+
+
+/* Contenido */
+
+h1 {
+    width: 550px;
+    height: auto;
+    position: absolute;
+    left: 20px;
+    top: 100px;
+    margin-top: 3%;
+    font-size: 50px;
+}
+
+h5 {
+    width: 450px;
+    height: auto;
+    position: absolute;
+    left: 100px;
+    top: 150px;
+    margin-top: 5%;
+    font-size: 25px;
+}
+
+.text2 {
+    margin-top: 225px;
+}
+
+.highlight {
+    color: green;
+}
+
+.image {
+    width: 350px;
+    margin-left: 145px;
+    margin-top: 35%;
+}
+
+.text3 {
+    margin-top: 265px;
+    font-size: 15px;
+}
+
+.text4 {
+    margin-top: 285px;
+    font-size: 15px;
+}
+
+.text3-p2 {
+    margin-top: 265px;
+    font-size: 15px;
+    margin-left: 700px;
+}
+
+.text4-p2 {
+    margin-top: 285px;
+    font-size: 15px;
+    margin-left: 700px;
+}
+
+.buttonAcceder {
+    height: auto;
+    position: absolute;
+    left: 75%;
+    bottom: 20%;
+}
+
+.custom-green-button {
+    background-color: #208839;
+    border-color: #28a745;
+    color: #ffffff;
+}
+  
+.custom-green-button:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+ }
+
+ 
+h1 {
+    width: 400px;
+    height: auto;
+    position: absolute;
+    left: 150px;
+    top: 100px;
+    margin-top: 3%;
+    font-size: 50px;
+}
+
+.highlight {
+    color: green;
+}
+
+.col-md-4 {
+    color: black;
+    width: 175px;
+    height: auto;
+    position: absolute;
+    left: 795px;
+    top: 300px;
+}
+
+.mb-3 {
+    color: black;
+    width: 375px;
+    height: auto;
+    position: absolute;
+    left: 795px;
+    top: 200px;
+}
+
+.mb-4 {
+    color: black;
+    width: 375px;
+    height: auto;
+    position: absolute;
+    left: 795px;
+    top: 100px;
+}
+
+.form-check {
+    height: auto;
+    position: absolute;
+    top: 155px;
+}
+
+.link-opacity-50-hover {
+    height: auto;
+    position: absolute;
+    top: 155px;
+    left: 187px;
+}
+
+.col-md-4-2 {
+    color: black;
+    width: 175px;
+    height: auto;
+    position: absolute;
+    left: 995px;
+    top: 300px;
+}
+
+.text-right {
+    color: black;
+    width: 475px;
+    height: auto;
+    position: absolute;
+    left: 755px;
+    top: 85px;
+    font-size: 30px;
+}
+
+
+.paypal {
+    width: 475px;
+    height: auto;
+    position: absolute;
+    left: 755px;
+    top: 215px;
+}

@@ -24,7 +24,7 @@ export class TypeUserComponent implements OnInit {
   }
 
   onPersonalExpenses(): void {
-    this.router.navigate(['/welcome-user'], { queryParams: { Id_User: this.Id_User } });
+    this.router.navigate(['/pay-for-access-1'], { queryParams: { Id_User: this.Id_User } });
   }
 
   onCompanyExpenses(): void {
@@ -32,7 +32,7 @@ export class TypeUserComponent implements OnInit {
       this.userService.updateTypeUser(this.Id_User, 2).subscribe(
         (response) => {
           console.log('User type updated', response);
-          this.router.navigate(['/welcome-user'], { queryParams: { Id_User: this.Id_User } });
+          this.router.navigate(['/pay-for-access-2'], { queryParams: { Id_User: this.Id_User } });
         },
         error => {
           console.error('Error updating user type', error);

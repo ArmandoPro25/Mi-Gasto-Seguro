@@ -13,7 +13,8 @@ import { ActivatedRoute } from '@angular/router';
 export class WelcomeUserComponent implements OnInit {
   videos: any[] = [];
   query: string = '';
-  defaultVideoId: string = 'BsHmvxK8Zns';
+  defaultVideoIdP: string = 'IVFolzLkvzI';
+  defaultVideoIdE: string = '26Rte_Wjc9w';
   defaultVideoUrl: SafeResourceUrl;
   userName: string = 'Usuario';
   Id_User: string = '';
@@ -25,10 +26,11 @@ export class WelcomeUserComponent implements OnInit {
     private route: ActivatedRoute, 
     private userService: UserService
   ) {
-    this.defaultVideoUrl = this.getSafeUrl(this.defaultVideoId);
+    this.defaultVideoUrl = this.getSafeUrl(this.defaultVideoIdE);
   }
 
   ngOnInit() {
+    // Primero, intenta obtener el ID del usuario de los parámetros de la ruta
     this.Id_User = this.route.snapshot.queryParams['Id_User'] || localStorage.getItem('Id_User') || '';
     
     if (this.Id_User) {
@@ -40,6 +42,24 @@ export class WelcomeUserComponent implements OnInit {
         },
         error => {
           console.error('Error al obtener el nombre del usuario', error);
+        }
+      );
+
+      this.userService.getUserType(this.Id_User).subscribe(
+        (response: any) => {
+          if (response.success) {
+            const typeUser = response.typeUser;
+            if (typeUser === 1) {
+              this.defaultVideoUrl = this.getSafeUrl(this.defaultVideoIdP);
+            } else if (typeUser === 2) {
+              this.defaultVideoUrl = this.getSafeUrl(this.defaultVideoIdE);
+            }
+          } else {
+            console.error('No se pudo obtener el tipo de usuario');
+          }
+        },
+        error => {
+          console.error('Error al obtener el tipo de usuario', error);
         }
       );
     } else {

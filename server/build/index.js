@@ -32,6 +32,8 @@ const cors_1 = __importDefault(require("cors"));
 const userRoutes_1 = __importDefault(require("./routes/userRoutes"));
 const dotenv = __importStar(require("dotenv"));
 const PersonalExpenseRoutes_1 = __importDefault(require("./routes/PersonalExpenseRoutes"));
+const BusinessExpenseRoutes_1 = __importDefault(require("./routes/BusinessExpenseRoutes"));
+const stripeRoutes_1 = __importDefault(require("./routes/stripeRoutes"));
 dotenv.config();
 class Server {
     constructor() {
@@ -49,6 +51,8 @@ class Server {
     routes() {
         this.app.use('/api/user', userRoutes_1.default);
         this.app.use('/api/personal-expense', PersonalExpenseRoutes_1.default);
+        this.app.use('/api/business-expense', BusinessExpenseRoutes_1.default);
+        this.app.use('/api/stripe', stripeRoutes_1.default);
     }
     start() {
         this.app.listen(this.app.get('port'), () => {

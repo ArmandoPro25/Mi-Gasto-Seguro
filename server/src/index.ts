@@ -5,6 +5,7 @@ import userRoutes from './routes/userRoutes';
 import * as dotenv from 'dotenv';
 import PersonalExpenseRoutes from './routes/PersonalExpenseRoutes';
 import BusinessExpenseRoutes from './routes/BusinessExpenseRoutes';
+import stripeRoutes from './routes/stripeRoutes';
 
 dotenv.config();
 
@@ -29,6 +30,7 @@ class Server {
         this.app.use('/api/user', userRoutes);
         this.app.use('/api/personal-expense', PersonalExpenseRoutes);
         this.app.use('/api/business-expense', BusinessExpenseRoutes);
+        this.app.use('/api/stripe', stripeRoutes);
     }
 
     start(): void {

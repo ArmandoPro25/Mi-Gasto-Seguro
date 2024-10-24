@@ -30,6 +30,9 @@ import { BusinessDepartmentComponent } from './components/tables-user-type2/busi
 import { PersonalExpenseComponent } from './components/tables-user-type1/personal-expense/personal-expense.component';
 import { BusinessExpenseComponent } from './components/tables-user-type2/business-expense/business-expense.component';
 import { PersonalExpenseFormComponent } from './components/tables-user-type1/personal-expense-form/personal-expense-form.component';
+import { PayForAccess1Component } from './components/init/pay-for-access-1/pay-for-access-1.component';
+import { PayForAccess2Component } from './components/init/pay-for-access-2/pay-for-access-2.component';
+import { PaypalComponent } from './components/init/paypal/paypal.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +57,10 @@ import { PersonalExpenseFormComponent } from './components/tables-user-type1/per
     BusinessDepartmentComponent,
     PersonalExpenseComponent,
     BusinessExpenseComponent,
-    PersonalExpenseFormComponent
+    PersonalExpenseFormComponent,
+    PayForAccess1Component,
+    PayForAccess2Component,
+    PaypalComponent
   ],
   imports: [
     BrowserModule,
@@ -62,7 +68,8 @@ import { PersonalExpenseFormComponent } from './components/tables-user-type1/per
     ButtonModule,
     CardModule,
     PasswordModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [
     HttpClient,

@@ -44,7 +44,7 @@ CREATE TABLE PersonalExpenses (
     Id_Category_Personal INT NOT NULL,                      -- ID de la Categoría               
     Notes VARCHAR(100) NULL,                                -- Notas Adicionales
     Ticket VARCHAR(100) NULL,                               -- Recibo del Gasto
-    FOREIGN KEY (Id_User) REFERENCES User(Id_User),
+    FOREIGN KEY (Id_User) REFERENCES User(Id_User) ON DELETE CASCADE,
     FOREIGN KEY (Id_Category_Personal) REFERENCES CategoryPersonal(Id_Category_Personal)
 );
 
@@ -57,7 +57,7 @@ CREATE TABLE PersonalIncome (
     Place_Income VARCHAR(100) NOT NULL,                     -- Lugar del Ingreso
     Type_Income VARCHAR(30) NOT NULL,                       -- Tipo de Ingreso
     Source_Income VARCHAR(15) NULL,                         -- Fuente del Ingreso       
-    FOREIGN KEY (Id_User) REFERENCES User(Id_User)
+    FOREIGN KEY (Id_User) REFERENCES User(Id_User) ON DELETE CASCADE
 );
 
 CREATE TABLE BusinessExpenses (
@@ -72,7 +72,7 @@ CREATE TABLE BusinessExpenses (
     Frequency_Expenses VARCHAR(30) NULL,                    -- Frecuencia del Gasto
     Taxes DECIMAL(10, 2) NULL,                              -- Impuestos
     Ticket VARCHAR(100) NULL,                               -- Recicbo del Gasto
-    FOREIGN KEY (Id_User) REFERENCES User(Id_User),
+    FOREIGN KEY (Id_User) REFERENCES User(Id_User) ON DELETE CASCADE,
     FOREIGN KEY (Id_Category_Business) REFERENCES CategoryBusiness(Id_Category_Business)
 );
 
@@ -84,12 +84,12 @@ CREATE TABLE BusinessIncome (
     Date_Income DATETIME NOT NULL,                          -- Fecha del Ingreso
     Place_Income VARCHAR(100) NOT NULL,                     -- Lugar del Ingreso
     Source_Income VARCHAR(15) NULL,                         -- Fuente del Ingreso
-    FOREIGN KEY (Id_User) REFERENCES User(Id_User)
+    FOREIGN KEY (Id_User) REFERENCES User(Id_User) ON DELETE CASCADE
 );
 
 CREATE TABLE Budget (
     Id_User INT PRIMARY KEY,                                -- ID del Usuario
     Total_Budget DECIMAL(10, 2),                            -- Presupuesto Total
     Actual_Budget DECIMAL(10, 2),                           -- Presupuesto Actual
-    FOREIGN KEY (Id_User) REFERENCES User(Id_User)
+    FOREIGN KEY (Id_User) REFERENCES User(Id_User) ON DELETE CASCADE
 );
