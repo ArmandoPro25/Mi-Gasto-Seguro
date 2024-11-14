@@ -8,6 +8,9 @@
           <button type="button" class="btn" [routerLink]="['/personal-report']"><h4>Informe</h4></button>
       </div>
       <div class="right">
+        <button class="btn btn-primary" type="button" [routerLink]="['/zoom']" style="color: white; text-decoration: none;">
+          Iniciar Conferencia
+        </button>
         <button type="button" class="btn btn-outline-success" [routerLink]="['/my-account']">Mi cuenta</button>
       </div>
   </div>
@@ -15,6 +18,7 @@
 
 <div class="buttonNew">
   <button class="btn btn-lg custom-green-button" (click)="createNewExpense()"> + Nuevo</button>
+  
 </div>
 
 <h1 class="back" (click)="loadPreviousMonthExpenses()">&lt;</h1>
