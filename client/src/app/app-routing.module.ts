@@ -27,6 +27,7 @@ import { BusinessIncomeFormComponent } from './components/tables-user-type2/busi
 import { PayForAccess1Component } from './components/init/pay-for-access-1/pay-for-access-1.component';
 import { PayForAccess2Component } from './components/init/pay-for-access-2/pay-for-access-2.component';
 import { PaypalComponent } from './components/init/paypal/paypal.component';
+import { ZoomComponent } from './components/init/zoom/zoom.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -56,7 +57,9 @@ const routes: Routes = [
   { path: 'personal-expense-form', component: PersonalExpenseFormComponent },
   { path: 'pay-for-access-1', component: PayForAccess1Component },
   { path: 'pay-for-access-2', component: PayForAccess2Component },
-  { path: 'paypal', component: PaypalComponent }
+  { path: 'paypal', component: PaypalComponent },
+  { path: 'zoom', component: ZoomComponent}
+
 ];
 
 @NgModule({
