@@ -28,13 +28,55 @@ export class PersonalExpenseComponent implements OnInit {
 
   ngOnInit(): void {
     this.title.setTitle('Detalle del gasto');
-
     const expenseId = this.route.snapshot.paramMap.get('id');
     if (expenseId) {
       this.getExpenseDetails(expenseId);
     }
+    if (isPlatformBrowser(this.platformId)) {
+      this.loadGoogleMapsScript();
+    }
   }
-
+  
+  private loadGoogleMapsScript(): void {
+    if (isPlatformBrowser(this.platformId)) {
+      const existingScript = document.getElementById('googleMapsScript');
+      if (!existingScript) {
+        const script = document.createElement('script');
+        script.id = 'googleMapsScript';
+        script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyBDaeWicvigtP9xPv919E-RNoxfvC-Hqik`;
+        script.async = true;
+        script.defer = true;
+        script.onload = () => {
+          if (this.placeInfo?.center) {
+            const [lng, lat] = this.placeInfo.center;
+            this.iniciarMap({ lat, lng });
+          }
+        };
+        document.body.appendChild(script);
+      }
+    }
+  }
+  
+  iniciarMap(coord: { lat: number; lng: number }): void {
+    if (isPlatformBrowser(this.platformId)) {
+      const mapElement = document.getElementById('map');
+      
+      if (mapElement) {
+        const map = new google.maps.Map(mapElement as HTMLElement, {
+          zoom: 10,
+          center: coord
+        });
+    
+        new google.maps.Marker({
+          position: coord,
+          map: map
+        });
+      } else {
+        console.error('El elemento con ID "map" no se encontró en el DOM.');
+      }
+    }
+  }
+  
   private getExpenseDetails(expenseId: string): void {
     this.personalExpensesService.getOne(expenseId).subscribe(
       (data: PersonalExpense) => {
@@ -46,7 +88,7 @@ export class PersonalExpenseComponent implements OnInit {
         console.error('Error al obtener los detalles del gasto', error);
       }
     );
-  }  
+  }
 
   private getImage(placeName: string): void {
     this.mapboxService.searchImage(placeName).subscribe(
@@ -67,8 +109,11 @@ export class PersonalExpenseComponent implements OnInit {
       (response) => {
         if (response.features && response.features.length > 0) {
           this.placeInfo = response.features[0];
-          
-          console.log('Información del lugar:', this.placeInfo);
+          const [lng, lat] = this.placeInfo.center;
+          console.log('Coordenadas:', { lat, lng });
+          if (isPlatformBrowser(this.platformId)) {
+            this.iniciarMap({ lat, lng });
+          }
         }
       },
       (error) => {

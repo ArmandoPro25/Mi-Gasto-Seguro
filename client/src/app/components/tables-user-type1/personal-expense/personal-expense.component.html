@@ -59,10 +59,14 @@
 </div>
 
 
+
 <div *ngIf="placeInfo" class="place-info-card">
   <h4 class="highlight">Información del Lugar:</h4>
   <p><strong>Nombre del lugar:</strong> {{ placeInfo.text || 'No disponible' }}</p>
   <p><strong>Dirección:</strong> {{ placeInfo.place_name || 'No disponible' }}</p>
   <img *ngIf="placeImageUrl" [src]="placeImageUrl" alt="Imagen del lugar" class="place-image">
+  <div id="map"></div>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDaeWicvigtP9xPv919E-RNoxfvC-Hqik&callback=iniciarMap"></script>
+
 </div>
 
