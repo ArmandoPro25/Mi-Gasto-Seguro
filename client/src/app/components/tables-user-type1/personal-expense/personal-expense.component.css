@@ -221,3 +221,28 @@ h1 {
 .place-image {
     width: 200px;
 }
+
+.exchange-rate-section {
+    margin-top: 20px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  
+  .exchange-rate-section table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .exchange-rate-section th,
+  .exchange-rate-section td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .exchange-rate-section th {
+    background-color: #e7f5e6;
+  }
+  

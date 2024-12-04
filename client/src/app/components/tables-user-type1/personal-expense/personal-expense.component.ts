@@ -5,13 +5,19 @@ import { isPlatformBrowser } from '@angular/common';
 import { PersonalExpense } from '../../../models/PersonalExpense';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MapboxService } from '../../../services/mapbox.service';
+import { ExchangeRateService } from '../../../services/exchange-rate.service';
+
 
 @Component({
   selector: 'app-personal-expense',
   templateUrl: './personal-expense.component.html',
   styleUrls: ['./personal-expense.component.css']
 })
+
+
 export class PersonalExpenseComponent implements OnInit {
+  exchangeRates: { [key: string]: number } | null = null;
+  baseCurrency: string = 'USD';
   expenseDetails: PersonalExpense | null = null;
   expenseId!: number;
   placeInfo: any;
@@ -23,7 +29,8 @@ export class PersonalExpenseComponent implements OnInit {
     private mapboxService: MapboxService,
     @Inject(PLATFORM_ID) private platformId: Object, 
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private exchangeRateService: ExchangeRateService,
   ) {}
 
   ngOnInit(): void {
@@ -35,6 +42,18 @@ export class PersonalExpenseComponent implements OnInit {
     if (isPlatformBrowser(this.platformId)) {
       this.loadGoogleMapsScript();
     }
+    this.loadExchangeRates(); 
+  }
+
+  private loadExchangeRates(): void {
+    this.exchangeRateService.getExchangeRates(this.baseCurrency).subscribe({
+      next: (data) => {
+        this.exchangeRates = data.conversion_rates;
+      },
+      error: (error) => {
+        console.error('Error al cargar tasas de cambio:', error);
+      },
+    });
   }
   
   private loadGoogleMapsScript(): void {

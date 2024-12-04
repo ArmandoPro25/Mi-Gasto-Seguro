@@ -35,6 +35,8 @@ import { PayForAccess2Component } from './components/init/pay-for-access-2/pay-f
 import { PaypalComponent } from './components/init/paypal/paypal.component';
 import { ZoomComponent } from './components/init/zoom/zoom.component';
 import { RouterModule,Routes } from '@angular/router';
+import { BusinessExpensesFormComponent } from './components/tables-user-type2/business-expenses-form/business-expenses-form.component';
+import { ExchangeRatesComponent } from './components/exchange-rates/exchange-rates.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +65,9 @@ import { RouterModule,Routes } from '@angular/router';
     PayForAccess1Component,
     PayForAccess2Component,
     PaypalComponent,
-    ZoomComponent
+    ZoomComponent,
+    BusinessExpensesFormComponent,
+    ExchangeRatesComponent
   ],
   imports: [
     BrowserModule,

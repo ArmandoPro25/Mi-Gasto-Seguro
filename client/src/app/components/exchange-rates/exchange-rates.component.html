@@ -1,0 +1,19 @@
+<div class="exchange-rate-section">
+    <h4 class="highlight">Tasas de cambio - {{ baseCurrency }}</h4>
+    <table *ngIf="exchangeRates">
+      <thead>
+        <tr>
+          <th>Moneda</th>
+          <th>Tasa</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let rate of exchangeRates | keyvalue">
+          <td>{{ rate.key }}</td>
+          <td>{{ rate.value | number:'1.2-2' }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <p *ngIf="!exchangeRates">Cargando tasas de cambio...</p>
+  </div>
+  
