@@ -28,6 +28,7 @@ import { PayForAccess2Component } from './components/init/pay-for-access-2/pay-f
 import { PaypalComponent } from './components/init/paypal/paypal.component';
 import { ZoomComponent } from './components/init/zoom/zoom.component';
 import { ExchangeRatesComponent } from './components/exchange-rates/exchange-rates.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -38,26 +39,26 @@ const routes: Routes = [
   { path: 'create-account', component: CreateAccountComponent },
   { path: 'login', component: LoginComponent },
   { path: 'verify-email', component: VerifyEmailComponent },
-  { path: 'home-user-type-1', component: HomeUserType1Component },
-  { path: 'home-user-type-2', component: HomeUserType2Component },
+  { path: 'home-user-type-1', component: HomeUserType1Component, canActivate: [AuthGuard] },
+  { path: 'home-user-type-2', component: HomeUserType2Component, canActivate: [AuthGuard] },
   { path: 'type-user', component: TypeUserComponent },
   { path: 'privacy-policy', component: PrivacyPolicyComponent },
-  { path: 'personal-income', component: PersonalIncomeComponent },
-  { path: 'personal-report', component: PersonalReportComponent },
-  { path: 'business-income', component: BusinessIncomeComponent },
-  { path: 'business-report', component: BusinessReportComponent },
-  { path: 'my-account', component: MyAccountComponent },
+  { path: 'personal-income', component: PersonalIncomeComponent, canActivate: [AuthGuard] },
+  { path: 'personal-report', component: PersonalReportComponent, canActivate: [AuthGuard] },
+  { path: 'business-income', component: BusinessIncomeComponent, canActivate: [AuthGuard] },
+  { path: 'business-report', component: BusinessReportComponent, canActivate: [AuthGuard] },
+  { path: 'my-account', component: MyAccountComponent, canActivate: [AuthGuard] },
   { path: 'welcome-user', component: WelcomeUserComponent },
-  { path: 'personal-income-from', component: PersonalIncomeFromComponent },
-  { path: 'business-income-form', component: BusinessIncomeFormComponent },
-  { path: 'business-department', component: BusinessDepartmentComponent},
-  { path: 'personal-expense/:id', component: PersonalExpenseComponent },
-  { path: 'business-expense', component: BusinessExpenseComponent },
-  { path: 'personal-expense-form', component: PersonalExpenseFormComponent },
+  { path: 'personal-income-from', component: PersonalIncomeFromComponent, canActivate: [AuthGuard] },
+  { path: 'business-income-form', component: BusinessIncomeFormComponent, canActivate: [AuthGuard] },
+  { path: 'business-department', component: BusinessDepartmentComponent, canActivate: [AuthGuard] },
+  { path: 'personal-expense/:id', component: PersonalExpenseComponent, canActivate: [AuthGuard] },
+  { path: 'business-expense', component: BusinessExpenseComponent, canActivate: [AuthGuard] },
+  { path: 'personal-expense-form', component: PersonalExpenseFormComponent, canActivate: [AuthGuard] },
   { path: 'pay-for-access-1', component: PayForAccess1Component },
   { path: 'pay-for-access-2', component: PayForAccess2Component },
   { path: 'paypal', component: PaypalComponent },
-  { path: 'zoom', component: ZoomComponent},
+  { path: 'zoom', component: ZoomComponent, canActivate: [AuthGuard] },
   { path: 'exchange-rates', component: ExchangeRatesComponent }
 
 ];
