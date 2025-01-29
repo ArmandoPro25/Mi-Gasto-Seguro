@@ -41,7 +41,7 @@ export class AppComponent implements OnInit {
   private metodoinactividad() {
     effect(() => {
       const currentRoute = this.router.url;
-      if (currentRoute === '/login' || currentRoute === '/create-account') {
+      if (currentRoute === '/login' || currentRoute === '/create-account'||currentRoute ==='/home') {
         if (this.time) {
           clearTimeout(this.time);
         }
@@ -51,3 +51,4 @@ export class AppComponent implements OnInit {
     }, { injector: this.inject });
   }
 }
+
