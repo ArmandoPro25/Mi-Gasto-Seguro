@@ -12,7 +12,7 @@
           <button class="btn btn-primary" type="button" [routerLink]="['/zoom']" style="color: white; text-decoration: none;">
             Iniciar Conferencia
           </button>
-          <button type="button" class="btn btn-outline-success" [routerLink]="['/my-account']">Mi cuenta</button>
+          <button type="button" class="btn btn-outline-success" (click)="logout()">Cerrar Sesión</button>
         </div>
     </div>
 </nav>

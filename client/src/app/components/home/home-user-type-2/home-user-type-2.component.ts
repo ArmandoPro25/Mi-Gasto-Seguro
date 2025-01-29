@@ -104,4 +104,9 @@ export class HomeUserType2Component implements OnInit {
       console.error('Usuario no autenticado');
     }
   }
+
+  logout(){
+    localStorage.removeItem('IdUser');
+    this.router.navigateByUrl('/login');
+  }
 }
