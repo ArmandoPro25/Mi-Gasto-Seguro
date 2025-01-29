@@ -38,6 +38,7 @@ import { RouterModule,Routes } from '@angular/router';
 import { BusinessExpensesFormComponent } from './components/tables-user-type2/business-expenses-form/business-expenses-form.component';
 import { ExchangeRatesComponent } from './components/exchange-rates/exchange-rates.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -67,7 +68,7 @@ import { ExchangeRatesComponent } from './components/exchange-rates/exchange-rat
     PaypalComponent,
     ZoomComponent,
     BusinessExpensesFormComponent,
-    ExchangeRatesComponent
+    ExchangeRatesComponent,
   ],
   imports: [
     BrowserModule,

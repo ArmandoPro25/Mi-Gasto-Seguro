@@ -22,14 +22,16 @@ CREATE TABLE CategoryBusiness (
     CategoryBusiness VARCHAR(15) NOT NULL                   -- Nombre de la Categoría
 );
 
-INSERT INTO CategoryPersonal (CategoryPersonal) VALUES ('Servicio');
-INSERT INTO CategoryPersonal (CategoryPersonal) VALUES ('Suscripción');
-INSERT INTO CategoryPersonal (CategoryPersonal) VALUES ('Inversión');
-INSERT INTO CategoryPersonal (CategoryPersonal) VALUES ('Gasto Personal');
-INSERT INTO CategoryPersonal (CategoryPersonal) VALUES ('Alimentación');
-INSERT INTO CategoryPersonal (CategoryPersonal) VALUES ('Vivienda');
-INSERT INTO CategoryPersonal (CategoryPersonal) VALUES ('Transporte');
-INSERT INTO CategoryPersonal (CategoryPersonal) VALUES ('Salud');
+INSERT INTO CategoryPersonal (CategoryPersonal) VALUES 
+('Servicio'),
+('Suscripción'),
+('Inversión'),
+('Gasto Personal'),
+('Alimentación'),
+('Vivienda'),
+('Transporte'),
+('Salud');
+
 
 
 CREATE TABLE PersonalExpenses (
