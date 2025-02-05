@@ -58,105 +58,166 @@
     top: 145px;
 }
 
-/* Contenido */
-
-.buttonNew {
-    height: auto;
-    position: absolute;
-    top: 17%;
-    left: 5%;
-}
-
-.custom-green-button {
-    background-color: #5db672;
-    border-color: #8ae9a0;
-    color: #ffffff;
-}
+/* Utility Classes */
+.min-h-screen {
+    min-height: 100vh;
+  }
   
-.custom-green-button:hover {
-    background-color: #46dd67;
-    border-color: #68e685;
-}
-
-.text {
-    width: 600px;
-    height: auto;
-    position: absolute;
-    left: 19%;
-    top: 65px;
-    margin-top: 3%;
-    font-size: 50px;
-}
-
-.back {
-    height: auto;
-    position: absolute;
-    left: 14%;
-    top: 65px;
-    margin-top: 3%;
-    font-size: 50px;
-    cursor: pointer;
-}
-
-.next {
-    height: auto;
-    position: absolute;
-    left: 65%;
-    top: 65px;
-    margin-top: 3%;
-    font-size: 50px;
-    cursor: pointer;
-}
-
-.highlight {
-    color: green;
-}
-
-.expenses-table {
-    width: 60%;
-    border-collapse: collapse;
-    margin: 20px 0;
-    font-size: 15px;
-    border-radius: 25px;
+  .bg-gray-50 {
+    background-color: #f9fafb;
+  }
+  
+  .container {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .flex {
+    display: flex;
+  }
+  
+  .items-center {
     align-items: center;
-    margin-left: 5%;
-    margin-top: 10%;
-}
-
-.expenses-table th,
-.expenses-table td {
-    border: 1px solid black;
-    padding: 10px;
-    text-align: center;
-}
-
-.expenses-table th {
-    background-color: #49454f;
+  }
+  
+  .justify-between {
+    justify-content: space-between;
+  }
+  
+  .space-x-6 > * + * {
+    margin-left: 1.5rem;
+  }
+  
+  .mb-8 {
+    margin-bottom: 2rem;
+  }
+  
+  .text-4xl {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+  
+  .font-bold {
+    font-weight: 700;
+  }
+  
+  .text-emerald-600 {
+    color: #059669;
+  }
+  
+  .bg-emerald-600 {
+    background-color: #059669;
+  }
+  
+  .hover\:bg-emerald-700:hover {
+    background-color: #047857;
+  }
+  
+  .text-white {
     color: white;
-}
-
-.expenses-table th:first-child,
-.expenses-table td:first-child {
-    width: 35%;
-}
-
-.expenses-table th:nth-child(2),
-.expenses-table td:nth-child(2) {
-    width: 20%;
-}
-
-.expenses-table th:last-child,
-.expenses-table td:last-child {
-    width: 25%;
-}
-
-.expense-link {
-    color: #007bff;
-    text-decoration: underline;
-    cursor: pointer;
-}
+  }
   
-.expense-link:hover {
-    color: #0056b3;
-}
+  .rounded-lg {
+    border-radius: 0.5rem;
+  }
   
+  .shadow-lg {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+  
+  /* Table Styles */
+  .bg-white {
+    background-color: white;
+  }
+  
+  .rounded-xl {
+    border-radius: 0.75rem;
+  }
+  
+  .overflow-hidden {
+    overflow: hidden;
+  }
+  
+  .w-full {
+    width: 100%;
+  }
+  
+  .bg-gray-800 {
+    background-color: #1f2937;
+  }
+  
+  .px-6 {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  
+  .py-4 {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+  
+  .text-left {
+    text-align: left;
+  }
+  
+  .text-right {
+    text-align: right;
+  }
+  
+  .text-center {
+    text-align: center;
+  }
+  
+  .border-b {
+    border-bottom-width: 1px;
+  }
+  
+  .border-gray-200 {
+    border-color: #e5e7eb;
+  }
+  
+  .hover\:bg-gray-50:hover {
+    background-color: #f9fafb;
+  }
+  
+  .font-semibold {
+    font-weight: 600;
+  }
+  
+  .text-blue-600 {
+    color: #2563eb;
+  }
+  
+  .hover\:text-blue-800:hover {
+    color: #1e40af;
+  }
+  
+  /* Fixed Elements */
+  .fixed {
+    position: fixed;
+  }
+  
+  .right-8 {
+    right: 2rem;
+  }
+  
+  .top-32 {
+    top: 8rem;
+  }
+  
+  /* Transitions */
+  .transition-colors {
+    transition-property: background-color, border-color, color, fill, stroke;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+  }
+
+  .expenses-table {
+    margin-left: -20px; /* Ajusta el valor según sea necesario */
+    width: 75%; /* Reduce el ancho de la tabla */
+}
+
+.mb-8 {
+    margin-bottom: 2rem;
+    margin-top: 2rem; /* Agregar margen superior */
+}

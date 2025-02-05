@@ -26,6 +26,7 @@ export class HomeUserType1Component implements OnInit {
     this.setCurrentMonth();
   }
 
+
   setCurrentMonth() {
     const date = new Date();
     const months = [

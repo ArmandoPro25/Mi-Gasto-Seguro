@@ -14,60 +14,56 @@
   </div>
 </nav>
 
+<div class="expense-details-container">
+  <h1 class="page-title">Detalles del <span class="highlight">gasto</span></h1>
 
-<h1>Detalles del <span class="highlight">gasto</span></h1>
+  <div class="expense-details-card" *ngIf="expenseDetails">
+    <div class="detail-group">
+      <h4 class="detail-label">Descripción</h4>
+      <h4 class="detail-value">{{ expenseDetails.Description_Expense }}</h4>
+    </div>
 
-<div *ngIf="expenseDetails">
-  <div class="descripcion">
-      <h4 class="highlight">Descripción:</h4>
-      <h4 class="r_descripcion">{{ expenseDetails.Description_Expense }}</h4>
-  </div>
-  
-  <div class="monto">
-      <h4 class="highlight">Monto:</h4>
-      <h4 class="r_monto">{{ expenseDetails.Amount_Expense | currency }}</h4>
-  </div>
-  
-  <div class="fecha">
-      <h4 class="highlight">Fecha:</h4>
-      <h4 class="r_fecha">{{ expenseDetails.Date_Expense | date:'mediumDate' }}</h4>
-  </div>
-  
-  <div class="lugar">
-      <h4 class="highlight">Lugar:</h4>
-      <h4 class="r_lugar">{{ expenseDetails.Place_Expense }}</h4>
-  </div>
-  
-  <div class="metodoPago">
-      <h4 class="highlight">Método de pago:</h4>
-      <h4 class="r_metodoPago">{{ expenseDetails.Payment_Method }}</h4>
-  </div>
-  
-  <div class="frecuencia">
-      <h4 class="highlight">Frecuencia:</h4>
-      <h4 class="r_frecuencia">{{ expenseDetails.Frequency_Expenses }}</h4>
+    <div class="detail-group">
+      <h4 class="detail-label">Monto</h4>
+      <h4 class="detail-value">{{ expenseDetails.Amount_Expense | currency }}</h4>
+    </div>
+
+    <div class="detail-group">
+      <h4 class="detail-label">Fecha</h4>
+      <h4 class="detail-value">{{ expenseDetails.Date_Expense | date:'mediumDate' }}</h4>
+    </div>
+
+    <div class="detail-group">
+      <h4 class="detail-label">Lugar</h4>
+      <h4 class="detail-value">{{ expenseDetails.Place_Expense }}</h4>
+    </div>
+
+    <div class="detail-group">
+      <h4 class="detail-label">Método de pago</h4>
+      <h4 class="detail-value">{{ expenseDetails.Payment_Method }}</h4>
+    </div>
+
+    <div class="detail-group">
+      <h4 class="detail-label">Frecuencia</h4>
+      <h4 class="detail-value">{{ expenseDetails.Frequency_Expenses }}</h4>
+    </div>
+
+    <div class="detail-group">
+      <h4 class="detail-label">Categoría</h4>
+      <h4 class="detail-value">{{ expenseDetails.CategoryPersonal }}</h4>
+    </div>
+
+    <div class="detail-group">
+      <h4 class="detail-label">Notas adicionales</h4>
+      <h4 class="detail-value">{{ expenseDetails.Notes }}</h4>
+    </div>
   </div>
 
-  <div class="categoria">
-    <h4 class="highlight">Categoría:</h4>
-    <h4 class="r_categoria">{{ expenseDetails.CategoryPersonal }}</h4>
+  <div *ngIf="placeInfo" class="place-info-card">
+    <h4>Información del Lugar</h4>
+    <p><strong>Nombre del lugar:</strong> {{ placeInfo.text || 'No disponible' }}</p>
+    <p><strong>Dirección:</strong> {{ placeInfo.place_name || 'No disponible' }}</p>
+    <img *ngIf="placeImageUrl" [src]="placeImageUrl" alt="Imagen del lugar" class="place-image">
+    <div id="map"></div>
   </div>
-
-  
-  <div class="notas">
-      <h4 class="highlight">Notas adicionales:</h4>
-      <h4 class="r_notas">{{ expenseDetails.Notes }}</h4>
-  </div>
-</div>
-
-
-
-<div *ngIf="placeInfo" class="place-info-card">
-  <h4 class="highlight">Información del Lugar:</h4>
-  <p><strong>Nombre del lugar:</strong> {{ placeInfo.text || 'No disponible' }}</p>
-  <p><strong>Dirección:</strong> {{ placeInfo.place_name || 'No disponible' }}</p>
-  <img *ngIf="placeImageUrl" [src]="placeImageUrl" alt="Imagen del lugar" class="place-image">
-  <div id="map"></div>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDaeWicvigtP9xPv919E-RNoxfvC-Hqik&callback=iniciarMap"></script>
-
 </div>
