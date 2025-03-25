@@ -42,7 +42,7 @@ export class HomeUserType1Component implements OnInit {
     this.titleService.setTitle('Mi Gasto Seguro');
 
     if (isPlatformBrowser(this.platformId)) {
-      this.idUser = localStorage.getItem('IdUser');
+      this.idUser = localStorage.getItem('Id_User');
       if (this.idUser) {
         this.loadExpenses(this.currentMonth, this.currentYear);
       } else {

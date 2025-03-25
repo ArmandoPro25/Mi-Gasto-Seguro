@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { isPlatformBrowser } from '@angular/common';
 import { UserService } from '../../../services/user.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-pay-for-access-1',
@@ -18,6 +19,7 @@ export class PayForAccess1Component implements OnInit {
     private userService: UserService,
     private router: Router,
     private titleService: Title,
+    private route: ActivatedRoute,
     @Inject(PLATFORM_ID) private platformId: Object
   ) {}
 
@@ -26,7 +28,7 @@ export class PayForAccess1Component implements OnInit {
     this.titleService.setTitle('Acceder a Mi Gasto Seguro');
 
     if (isPlatformBrowser(this.platformId)) {
-      this.idUser = localStorage.getItem('IdUser');
+      this.idUser = this.route.snapshot.queryParams['Id_User'] || localStorage.getItem('Id_User');
       if (!this.idUser) {
         console.error('Usuario no autenticado');
         this.router.navigate(['/login']);
@@ -86,6 +88,7 @@ export class PayForAccess1Component implements OnInit {
       onApprove: (data: any, actions: any) => {
         return actions.order.capture().then((details: any) => {
           alert('Transaction completed by ' + details.payer.name.given_name);
+          // Asegúrate de usar el Id_User correcto
           this.router.navigate([`/welcome-user`], { queryParams: { Id_User: this.idUser } });
         });
       },
