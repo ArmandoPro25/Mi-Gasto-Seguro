@@ -29,6 +29,7 @@ import { PaypalComponent } from './components/init/paypal/paypal.component';
 import { ZoomComponent } from './components/init/zoom/zoom.component';
 import { ExchangeRatesComponent } from './components/exchange-rates/exchange-rates.component';
 import { AuthGuard } from './guards/auth.guard';
+import { AboutUsComponent } from './components/docs/about-us/about-us.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -59,7 +60,8 @@ const routes: Routes = [
   { path: 'pay-for-access-2', component: PayForAccess2Component },
   { path: 'paypal', component: PaypalComponent },
   { path: 'zoom', component: ZoomComponent, canActivate: [AuthGuard] },
-  { path: 'exchange-rates', component: ExchangeRatesComponent }
+  { path: 'exchange-rates', component: ExchangeRatesComponent },
+  { path: 'about-us', component: AboutUsComponent}
 
 ];
 
